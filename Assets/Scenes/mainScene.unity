@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826163831}
   m_LocalRotation: {x: 0.6087613, y: -0, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 0, y: 17, z: -3}
+  m_LocalPosition: {x: 0, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1273975190}
@@ -294,11 +294,11 @@ MonoBehaviour:
     minTheshhold: -1
     maxTheshold: 0.8
     upShift: 0
-  - myObject: {fileID: 1675227623708650, guid: 63567dd1ece50d74c8a4e1fc15069e6d, type: 2}
+  - myObject: {fileID: 1515287654283886, guid: b59b01f05cffa294a9fbb475b1f6f00d, type: 2}
     minTheshhold: 0.78
     maxTheshold: 0.79
     upShift: 1
-  - myObject: {fileID: 1371361100612394, guid: a4930227308cddc45a62c89a824229da, type: 2}
+  - myObject: {fileID: 1109248294911448, guid: d54fd04501948414983599b486d87ccd, type: 2}
     minTheshhold: 0.8
     maxTheshold: 2
     upShift: 1
@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 1273975186}
   - component: {fileID: 1273975185}
   - component: {fileID: 1273975191}
+  - component: {fileID: 1273975187}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -350,6 +351,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1273975187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1273975184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5729c20f03e8a745a81c06c101cb15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!199 &1273975188
 ParticleSystemRenderer:
   serializedVersion: 4
@@ -461,7 +473,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 986279581
+  randomSeed: -122372801
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3716,11 +3728,11 @@ Light:
   m_GameObject: {fileID: 1451034586}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.25, g: 0.47241378, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 100
-  m_SpotAngle: 150
+  m_Type: 2
+  m_Color: {r: 0.52156866, g: 0.6627451, b: 1, a: 1}
+  m_Intensity: 18.33
+  m_Range: 6.59
+  m_SpotAngle: 158
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3737,9 +3749,9 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_FalloffTable:
     m_Table[0]: 0
     m_Table[1]: 0
@@ -3765,7 +3777,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1451034586}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1273975190}
