@@ -16,12 +16,11 @@ public class MapTerrainGenerator : MonoBehaviour {
     [Range(0, 1)]
     public float persistence;
     public float lacunarity;
-    public int[ , ] mapHeight;
-
 
     public bool hideObjects;
 
     public Vector2 mapCenter = Vector2.zero;
+    public Transform Map;
 
     float[,] noiseMap;
 
@@ -69,13 +68,11 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     void CreateHeight()
     {
-        mapHeight = new int[sizeX, sizeY];
-
         noiseMap = Noise.GeneratedNoiseMap(sizeX, sizeY, seed, noiseScale, octaves, persistence, lacunarity, mapCenter + offset, normalizedMode);
 
-        for(int i = -sizeX / 2; i <= sizeX / 2 ; i++)
+        for(int i = 0; i < sizeX ; i++)
         {
-            for (int j = -sizeY / 2; j <= sizeY / 2; i++)
+            for (int j = 0; j < sizeY; j++)
             {
                 float greyColor = noiseMap[i, j];
                 //Instanciate  object
@@ -84,8 +81,9 @@ public class MapTerrainGenerator : MonoBehaviour {
                     if (greyColor > el.minTheshhold && greyColor < el.maxTheshold)
                     {
                         GameObject myObj = Instantiate(el.myObject) as GameObject;
-                        myObj.transform.position = new Vector3(i , 0.0f, j);
+                        myObj.transform.position = new Vector3(i - sizeX / 2, 0.0f, j - sizeY / 2);
                         myObj.transform.Translate(Vector3.up * el.upShift);
+                        myObj.transform.parent = Map;
                     }
                 }
             }
