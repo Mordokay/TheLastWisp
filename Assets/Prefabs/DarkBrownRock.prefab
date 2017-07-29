@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4458641640316534}
   - component: {fileID: 33416333369338030}
   - component: {fileID: 23901422701335638}
+  - component: {fileID: 65479760930552096}
+  - component: {fileID: 114000025792720866}
   m_Layer: 0
   m_Name: DarkBrownRock
   m_TagString: Untagged
@@ -80,3 +82,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109248294911448}
   m_Mesh: {fileID: 4300000, guid: 2a6b3cac9a762dc4ea7bfa400b39f240, type: 3}
+--- !u!65 &65479760930552096
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109248294911448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019553844, y: 0.017442036, z: 0.0166972}
+  m_Center: {x: -0.00026634336, y: -0.0002145269, z: 0.001112775}
+--- !u!114 &114000025792720866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109248294911448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5298e7e5c732f94cad84807a1f752dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
