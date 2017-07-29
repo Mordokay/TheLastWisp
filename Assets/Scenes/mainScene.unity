@@ -253,7 +253,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -590851643
+  randomSeed: 2099880283
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3464,6 +3464,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 707500273}
+  - component: {fileID: 707500274}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -3484,6 +3485,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707500274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 707500272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02920936dad5ba49a2e8dbc1c8d57da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 41
+  sizeY: 41
+  normalizedMode: 1
+  seed: 12345
+  offset: {x: 0, y: 0}
+  noiseScale: 5
+  octaves: 2
+  persistence: 0.56
+  lacunarity: 0
+  hideObjects: 0
+  mapCenter: {x: 0, y: 0}
+  myItems:
+  - myObject: {fileID: 1119367340893574, guid: 5bdf5fa5060efce49a91a872ed715d9a, type: 2}
+    minTheshhold: -1
+    maxTheshold: -1
+    upShift: 0
+  - myObject: {fileID: 1515287654283886, guid: b59b01f05cffa294a9fbb475b1f6f00d, type: 2}
+    minTheshhold: 0.78
+    maxTheshold: 0.79
+    upShift: 1
+  - myObject: {fileID: 1109248294911448, guid: d54fd04501948414983599b486d87ccd, type: 2}
+    minTheshhold: 0.8
+    maxTheshold: 2
+    upShift: 1
 --- !u!1 &826163831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,13 +3603,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826163831}
-  m_LocalRotation: {x: 0.6087613, y: -0, z: -0, w: 0.7933535}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1273975190}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &826163837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3596,7 +3632,7 @@ GameObject:
   - component: {fileID: 1008018113}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3622,34 +3658,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008018111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02920936dad5ba49a2e8dbc1c8d57da, type: 3}
+  m_Script: {fileID: 11500000, guid: 36163ea62c0744046bc076b01a5e975f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 41
-  sizeY: 41
-  normalizedMode: 1
-  seed: 12345
-  offset: {x: 0, y: 0}
-  noiseScale: 5
-  octaves: 2
-  persistence: 0.56
-  lacunarity: 0
-  hideObjects: 0
-  mapCenter: {x: 0, y: 0}
-  Map: {fileID: 707500273}
-  myItems:
-  - myObject: {fileID: 1119367340893574, guid: 5bdf5fa5060efce49a91a872ed715d9a, type: 2}
-    minTheshhold: -1
-    maxTheshold: -1
-    upShift: 0
-  - myObject: {fileID: 1515287654283886, guid: b59b01f05cffa294a9fbb475b1f6f00d, type: 2}
-    minTheshhold: 0.78
-    maxTheshold: 0.79
-    upShift: 1
-  - myObject: {fileID: 1109248294911448, guid: d54fd04501948414983599b486d87ccd, type: 2}
-    minTheshhold: 0.8
-    maxTheshold: 2
-    upShift: 1
+  droppingBeacon: 1
 --- !u!1 &1084244649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,7 +3807,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1017358568
+  randomSeed: -1252389141
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7010,9 +7022,10 @@ GameObject:
   - component: {fileID: 1273975185}
   - component: {fileID: 1273975191}
   - component: {fileID: 1273975187}
+  - component: {fileID: 1273975188}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7058,6 +7071,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1468958653398794, guid: d72d12f76c0da3f49a322e97df137f2f, type: 2}
   bulletSpeed: 2
+--- !u!114 &1273975188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1273975184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1c2ab901b0305459525149aa1db477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beaconGreen: {fileID: 1170259132051610, guid: 7b5f1c0ba8858cd4f9fbc9095134f901,
+    type: 2}
+  beaconRed: {fileID: 1373763015748790, guid: 6803b38260ebc454480ac174b431fde0, type: 2}
+  beaconNormal: {fileID: 1274566438744376, guid: 38d5ce941f31c804e9b43ef947004302,
+    type: 2}
 --- !u!4 &1273975190
 Transform:
   m_ObjectHideFlags: 0
@@ -7313,7 +7342,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 703194279
+  randomSeed: 833644107
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7709,7 +7738,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1
+    maxNumParticles: 2
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -7873,7 +7902,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 12.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -8215,9 +8244,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 0.14509805}
+        key1: {r: 1, g: 1, b: 1, a: 0.3372549}
+        key2: {r: 0, g: 0, b: 0, a: 0.16078432}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -10528,8 +10557,8 @@ GameObject:
   - component: {fileID: 1475555509}
   - component: {fileID: 1475555508}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

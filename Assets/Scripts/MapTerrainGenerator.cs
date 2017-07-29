@@ -20,7 +20,6 @@ public class MapTerrainGenerator : MonoBehaviour {
     public bool hideObjects;
 
     public Vector2 mapCenter = Vector2.zero;
-    public Transform Map;
 
     float[,] noiseMap;
 
@@ -83,7 +82,7 @@ public class MapTerrainGenerator : MonoBehaviour {
                         GameObject myObj = Instantiate(el.myObject) as GameObject;
                         myObj.transform.position = new Vector3(i - sizeX / 2, 0.0f, j - sizeY / 2);
                         myObj.transform.Translate(Vector3.up * el.upShift);
-                        myObj.transform.parent = Map;
+                        myObj.transform.parent = this.transform;
                     }
                 }
             }
