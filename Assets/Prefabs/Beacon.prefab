@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4675914852787574}
   - component: {fileID: 33192206990794960}
   - component: {fileID: 23735005140853100}
-  m_Layer: 0
+  - component: {fileID: 65940017070682222}
+  - component: {fileID: 208243066020137008}
+  m_Layer: 10
   m_Name: Beacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,3 +82,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274566438744376}
   m_Mesh: {fileID: 4300000, guid: e8f36b47060b67a48b163c89e5a86092, type: 3}
+--- !u!65 &65940017070682222
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274566438744376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018090442, y: 0.018090446, z: 0.015732264}
+  m_Center: {x: -0.00001044618, y: -0.000052511237, z: -0.007948634}
+--- !u!208 &208243066020137008
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274566438744376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.009000001, y: 0.009000001, z: 0.008}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.008}
+  m_TimeToStationary: 0.5

@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: d5b73b0ac510501429be4b0bfa2073ec, type: 2}
 --- !u!1 &524219308
 GameObject:
   m_ObjectHideFlags: 0
@@ -10556,12 +10556,12 @@ GameObject:
   - component: {fileID: 1475555510}
   - component: {fileID: 1475555509}
   - component: {fileID: 1475555508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1475555508
 MeshRenderer:

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4206858239985242}
   - component: {fileID: 33775151453596624}
   - component: {fileID: 23617514626364586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeaconRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}

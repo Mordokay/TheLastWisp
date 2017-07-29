@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4911188406203430}
   - component: {fileID: 33548242124932380}
   - component: {fileID: 23328117059439848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BeaconGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
