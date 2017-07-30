@@ -22,7 +22,6 @@ public class RangedEnemyController : MonoBehaviour
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
         InvokeRepeating("FollowTarget", 0.0f, 0.1f);
         this.transform.localPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
-        Debug.Log(this.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,7 +48,7 @@ public class RangedEnemyController : MonoBehaviour
 
     private void FollowTarget()
     {
-        if ((this.transform.position - player.transform.position).magnitude > 3.0f)
+        if ((this.transform.position - player.transform.position).magnitude > 4.0f)
         {
 
             // did target move more than at least a minimum amount since last destination set?

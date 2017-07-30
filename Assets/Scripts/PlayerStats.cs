@@ -5,25 +5,24 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour {
 
     public bool droppingBeacon = true;
-    public float lightDecreaseSpeed;
-    Light playerHealth;
+    public float lightChangeSpeed;
     GameObject player;
     bool isLosingHealth;
     float finalHealth;
     bool isGainingHealth;
+    public Light playerLight;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.gameObject.GetComponentInChildren<Light>();
-        finalHealth = playerHealth.spotAngle;
+        finalHealth = playerLight.spotAngle;
     }
 
     private void Update()
     {
-        if(finalHealth!= playerHealth.spotAngle)
+        if(finalHealth != playerLight.spotAngle)
         {
-            if(finalHealth < playerHealth.spotAngle)
+            if(finalHealth < playerLight.spotAngle)
             {
                 isLosingHealth = true;
                 isGainingHealth = false;
@@ -36,14 +35,27 @@ public class PlayerStats : MonoBehaviour {
 
         if (isLosingHealth)
         {
-            if(playerHealth.spotAngle <= finalHealth)
+            if(playerLight.spotAngle <= finalHealth)
             {
-                playerHealth.spotAngle = finalHealth;
+                playerLight.spotAngle = finalHealth;
                 isLosingHealth = false;
             }
             else
             {
-                playerHealth.spotAngle -= Time.deltaTime * lightDecreaseSpeed;
+                playerLight.spotAngle -= Time.deltaTime * lightChangeSpeed;
+            }
+        }
+
+        else if (isGainingHealth)
+        {
+            if (playerLight.spotAngle >= finalHealth)
+            {
+                playerLight.spotAngle = finalHealth;
+                isGainingHealth = false;
+            }
+            else
+            {
+                playerLight.spotAngle += Time.deltaTime * lightChangeSpeed;
             }
         }
 
@@ -63,12 +75,21 @@ public class PlayerStats : MonoBehaviour {
 
     public bool isLowHealth()
     {
-        return finalHealth <= 30;
+        return finalHealth <= 20;
+    }
+
+    public bool isHighHealth()
+    {
+        return finalHealth >= 110;
     }
 
     public void LoseHealth(float amount)
     {
         finalHealth  -= amount;
+        if (finalHealth < 20)
+        {
+            finalHealth = 20;
+        }
     }
 
     public void GainHealth(float amount)

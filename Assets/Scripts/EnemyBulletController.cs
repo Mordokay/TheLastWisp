@@ -15,7 +15,7 @@ public class EnemyBulletController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player got hit by enemy bullet!!!!!");
+            //Debug.Log("Player got hit by enemy bullet!!!!!");
             GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
             explosion.GetComponent<ParticleSystem>().Play();
             Destroy(explosion, 1f);
