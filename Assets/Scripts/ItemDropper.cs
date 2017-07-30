@@ -68,7 +68,7 @@ public class ItemDropper : MonoBehaviour {
 
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    if (temporaryBeaconGreen.activeSelf)
+                    if (temporaryBeaconGreen && temporaryBeaconGreen.activeSelf)
                     {
                         GameObject myBeacon = Instantiate(beaconNormal) as GameObject;
                         myBeacon.transform.position = hit.point;
