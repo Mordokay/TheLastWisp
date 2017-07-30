@@ -9,7 +9,7 @@ public class PlayerAtackController : MonoBehaviour {
     GameObject gm;
 
 	void Start () {
-        bulletSpeed = 2.0f;
+        bulletSpeed = 10.0f;
         gm = GameObject.FindGameObjectWithTag("GameManager");
     }
 	
