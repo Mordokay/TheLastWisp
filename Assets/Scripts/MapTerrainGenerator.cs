@@ -34,6 +34,10 @@ public class MapTerrainGenerator : MonoBehaviour {
         public float maxTheshold;
         [SerializeField]
         public float upShift;
+        [SerializeField]
+        public bool isRock;
+        [SerializeField]
+        public bool canCharge;
     }
 
     [SerializeField]
@@ -83,6 +87,20 @@ public class MapTerrainGenerator : MonoBehaviour {
                         myObj.transform.position = new Vector3(i - sizeX / 2, 0.0f, j - sizeY / 2);
                         myObj.transform.Translate(Vector3.up * el.upShift);
                         myObj.transform.parent = this.transform;
+                        if (el.isRock) {
+                            if (el.canCharge)
+                            {
+
+                                myObj.GetComponent<RockBlend>().CanCharge = true;
+                                myObj.GetComponent<RockBlend>().Chargelevel = 100;
+                                myObj.GetComponent<RockBlend>().maxedGlow = true;
+                            }
+                            else
+                            {
+                                myObj.GetComponent<RockBlend>().CanCharge = false;
+                                myObj.GetComponent<RockBlend>().Chargelevel = 0;
+                            }
+                        }
                     }
                 }
             }

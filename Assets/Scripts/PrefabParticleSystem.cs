@@ -13,7 +13,7 @@ public class PrefabParticleSystem : MonoBehaviour {
         for(int i = 0; i < numberOfParticles; i++)
         {
             GameObject myPrefab = Instantiate(prefabObject);
-            myPrefab.transform.parent = this.transform.parent;
+            myPrefab.transform.parent = this.transform;
             myPrefab.transform.position = this.transform.position;
             myPrefab.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(0.0f, 1.0f), 0.0f,
                 Random.Range(0.0f, 1.0f)) * scatterSpeed;
