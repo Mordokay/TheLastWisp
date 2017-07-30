@@ -108,6 +108,48 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &223885167
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.7693367
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691582027002246, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f12ad2283b2365c459242a89eabd3b47, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &524219308
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +295,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -590851643
+  randomSeed: -1483229426
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -343,7 +385,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.766, b: 1, a: 1}
+      maxColor: {r: 0.69625866, g: 0.9341543, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3567,13 +3609,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826163831}
-  m_LocalRotation: {x: 0.6087613, y: -0, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 0, y: 17, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1273975190}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &826163837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3795,7 +3837,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1017358568
+  randomSeed: 92570726
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7115,8 +7157,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.52156866, g: 0.6627451, b: 1, a: 1}
-  m_Intensity: 18.33
-  m_Range: 6.59
+  m_Intensity: 10
+  m_Range: 10
   m_SpotAngle: 158
   m_CookieSize: 10
   m_Shadows:
@@ -7313,7 +7355,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 703194279
+  randomSeed: -720539382
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7403,7 +7445,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.69625866, g: 0.9341543, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9747,9 +9789,9 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
-    ratio: 0
-    light: {fileID: 1451034587}
+    enabled: 0
+    ratio: 1
+    light: {fileID: 108374973166664764, guid: 00a09f828718ff44da285cd3840dec27, type: 2}
     randomDistribution: 1
     color: 1
     range: 1
@@ -9798,7 +9840,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
