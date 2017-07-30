@@ -22,9 +22,9 @@ public class PlayerStats : MonoBehaviour {
 
     private void Update()
     {
-        if(finalHealth != playerLight.spotAngle)
+        if (finalHealth != playerLight.spotAngle)
         {
-            if(finalHealth < playerLight.spotAngle)
+            if (finalHealth < playerLight.spotAngle)
             {
                 isLosingHealth = true;
                 isGainingHealth = false;
@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour {
 
         if (isLosingHealth)
         {
-            if(playerLight.spotAngle <= finalHealth)
+            if (playerLight.spotAngle <= finalHealth)
             {
                 playerLight.spotAngle = finalHealth;
                 isLosingHealth = false;
@@ -74,7 +74,7 @@ public class PlayerStats : MonoBehaviour {
             }
         }
     }
-
+    
     public bool isLowHealth()
     {
         return finalHealth <= 20;
