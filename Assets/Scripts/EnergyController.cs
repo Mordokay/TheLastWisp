@@ -28,11 +28,11 @@ public class EnergyController : MonoBehaviour {
         {
             this.transform.position = Vector3.Lerp(this.transform.position, player.position, Time.deltaTime * 5.0f);
         }
-        if((this.transform.position - player.position).magnitude < 0.2f && !gm.GetComponent<PlayerStats>().isHighHealth())
+        if((this.transform.position - player.position).magnitude < 0.2f/* && !gm.GetComponent<PlayerStats>().isHighHealth()*/)
         {
             //Destroyes particle and gives player more energy
             Destroy(this.gameObject);
-            gm.GetComponent<PlayerStats>().GainHealth(10.0f);
+            gm.GetComponent<PlayerStats>().GainHealth(2.0f);
         }
     }
 }

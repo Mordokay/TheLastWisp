@@ -27,6 +27,15 @@ public class MelleEnemyController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("LightSaber"))
+        {
+            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
     private IEnumerator FollowTarget(float range, Transform target)
     {
         while (Vector3.SqrMagnitude(transform.position - target.position) > 0.1f)

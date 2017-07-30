@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class PlayerStats : MonoBehaviour {
     float finalHealth;
     bool isGainingHealth;
     public Light playerLight;
+    public Image deposit;
 
     private void Start()
     {
@@ -98,6 +100,13 @@ public class PlayerStats : MonoBehaviour {
         if(finalHealth > 110)
         {
             finalHealth = 110;
+            
+            if (deposit.fillAmount < 1 && (deposit.fillAmount + amount/100) <= 1)
+            {
+                
+                deposit.fillAmount += amount/100;
+            }
+            else { deposit.fillAmount = 1; }
         }
     }
 }

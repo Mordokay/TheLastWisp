@@ -33,6 +33,15 @@ public class RangedEnemyController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("LightSaber"))
+        {
+            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
     void CheckCanShoot()
     {
         if (Time.time - timeSinceLastShoot > shootTimeInterval && 
