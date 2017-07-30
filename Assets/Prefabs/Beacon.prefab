@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4675914852787574}
   - component: {fileID: 33192206990794960}
   - component: {fileID: 23735005140853100}
-  - component: {fileID: 65940017070682222}
   - component: {fileID: 208243066020137008}
+  - component: {fileID: 65925698019491798}
   m_Layer: 10
   m_Name: Beacon
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274566438744376}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.5, z: -0}
+  m_LocalPosition: {x: 18.65619, y: 0.5, z: -18.51965}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274566438744376}
   m_Mesh: {fileID: 4300000, guid: e8f36b47060b67a48b163c89e5a86092, type: 3}
---- !u!65 &65940017070682222
+--- !u!65 &65925698019491798
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,10 +102,10 @@ NavMeshObstacle:
   m_GameObject: {fileID: 1274566438744376}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.009000001, y: 0.009000001, z: 0.008}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Shape: 0
+  m_Extents: {x: 0.009000001, y: 0.009000001, z: 0.009000001}
+  m_MoveThreshold: 0.001
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: -0.008}
   m_TimeToStationary: 0.5
