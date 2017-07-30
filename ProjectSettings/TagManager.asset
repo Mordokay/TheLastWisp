@@ -7,6 +7,8 @@ TagManager:
   - Bullet
   - Ground
   - GameManager
+  - RangedEnemy
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -20,9 +22,9 @@ TagManager:
   - Bullet
   - Beacon
   - Ground
-  - 
-  - 
-  - 
+  - EnergyParticles
+  - EnemyBullet
+  - RangedEnemy
   - 
   - 
   - 
