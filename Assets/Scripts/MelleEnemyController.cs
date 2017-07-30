@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour {
+public class MelleEnemyController : MonoBehaviour
+{
 
-    public GameObject player;
+    GameObject player;
     Vector3 previousTargetPosition;
+    public GameObject energyParticles;
 
     void Start()
     {
@@ -16,6 +18,15 @@ public class EnemyController : MonoBehaviour {
         StartCoroutine(FollowTarget(100.0f, player.transform));
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
     private IEnumerator FollowTarget(float range, Transform target)
     {
         while (Vector3.SqrMagnitude(transform.position - target.position) > 0.1f)
@@ -23,7 +34,6 @@ public class EnemyController : MonoBehaviour {
             // did target move more than at least a minimum amount since last destination set?
             if (Vector3.SqrMagnitude(previousTargetPosition - target.position) > 1.0f)
             {
-                Debug.Log("Recalculate");
                 this.GetComponent<NavMeshAgent>().SetDestination(target.position);
                 previousTargetPosition = target.position;
             }

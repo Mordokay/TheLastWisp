@@ -21,7 +21,7 @@ public class PlayerAtackController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 GameObject myBullet = Instantiate(bullet, this.transform.position, transform.rotation);
-                Vector3 direction = hit.point - myBullet.transform.position;
+                Vector3 direction = (hit.point - myBullet.transform.position).normalized;
                 direction.y = 0;
                 myBullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
             }
