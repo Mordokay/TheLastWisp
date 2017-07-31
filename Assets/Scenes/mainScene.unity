@@ -7160,11 +7160,13 @@ MonoBehaviour:
   droppingBeacon: 0
   droppingBarrier: 0
   lightChangeSpeed: 10
+  finalHealth: 0
   playerLight: {fileID: 1451034587}
   deposit: {fileID: 1192880458}
   rockNormalCount: 0
   rockGlowCount: 0
   maxGlowRocks: 0
+  beacons: []
 --- !u!1 &1035183996
 GameObject:
   m_ObjectHideFlags: 0
