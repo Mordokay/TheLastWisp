@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class MapTerrainGenerator : MonoBehaviour {
 
@@ -76,9 +77,7 @@ public class MapTerrainGenerator : MonoBehaviour {
         gm.GetComponent<PlayerStats>().rocks = new int[sizeX, sizeY];
         gm.GetComponent<PlayerStats>().rockObjects = new GameObject[sizeX, sizeY];
         ground.transform.localScale = new Vector3(sizeX, ground.transform.localScale.y, sizeY);
-        redZone.transform.localScale = new Vector3(sizeX + 20, redZone.transform.localScale.y, sizeY + 20);
-
-        
+        redZone.transform.localScale = new Vector3(sizeX + 50, redZone.transform.localScale.y, sizeY + 50);
 
         CreateHeight();
         CreateColliders();
@@ -94,24 +93,28 @@ public class MapTerrainGenerator : MonoBehaviour {
         leftbound.transform.parent = this.transform;
         collider = leftbound.GetComponent<BoxCollider>();
         collider.size = new Vector3(1, collider.size.y, sizeY + 10);
+        leftbound.GetComponent<NavMeshObstacle>().size = new Vector3(1, collider.size.y, sizeY + 10);
 
         GameObject upperbound = Instantiate(boundary) as GameObject;
         upperbound.transform.position = new Vector3(0, 0, (-sizeY / 2) - offset);
         upperbound.transform.parent = this.transform;
         collider = upperbound.GetComponent<BoxCollider>();
         collider.size = new Vector3(sizeX + 10, collider.size.y, 1);
+        upperbound.GetComponent<NavMeshObstacle>().size = new Vector3(sizeX + 10, collider.size.y, 1);
 
         GameObject rightbound = Instantiate(boundary) as GameObject;
         rightbound.transform.position = new Vector3((-sizeX / 2) - offset, 0, 0);
         rightbound.transform.parent = this.transform;
         collider = rightbound.GetComponent<BoxCollider>();
         collider.size = new Vector3(1, collider.size.y, sizeY + 10);
+        rightbound.GetComponent<NavMeshObstacle>().size = new Vector3(1, collider.size.y, sizeY + 10);
 
         GameObject lowerbound = Instantiate(boundary) as GameObject;
         lowerbound.transform.position = new Vector3(0, 0, (sizeY / 2) + offset);
         lowerbound.transform.parent = this.transform;
         collider = lowerbound.GetComponent<BoxCollider>();
         collider.size = new Vector3(sizeX + 10, collider.size.y, 1);
+        lowerbound.GetComponent<NavMeshObstacle>().size = new Vector3(sizeX + 10, collider.size.y, 1);
     }
 
     void CreateHeight()
