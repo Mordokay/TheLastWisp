@@ -479,6 +479,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 195115217017474562, guid: 7bf141cc86a5e5446aa1253f8873684c,
+        type: 2}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195115217017474562, guid: 7bf141cc86a5e5446aa1253f8873684c,
+        type: 2}
+      propertyPath: m_StoppingDistance
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 7bf141cc86a5e5446aa1253f8873684c, type: 2}
@@ -7960,8 +7970,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
-      minScalar: 0.2
+      scalar: 1
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11699,6 +11709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxVelocity: 5
+  dropEnergyRate: 3
 --- !u!54 &1273975186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11745,10 +11756,10 @@ MonoBehaviour:
   beaconRed: {fileID: 1373763015748790, guid: 6803b38260ebc454480ac174b431fde0, type: 2}
   beaconNormal: {fileID: 1274566438744376, guid: 38d5ce941f31c804e9b43ef947004302,
     type: 2}
-  barrierGreen: {fileID: 1653685156705138, guid: 3aeb1ee579591d6458312966bd18e6ae,
+  barrierGreen: {fileID: 1587622121983756, guid: 3aeb1ee579591d6458312966bd18e6ae,
     type: 2}
-  barrierRed: {fileID: 1845091407853536, guid: 1f4f0f0461475174594f5bce8def39d3, type: 2}
-  barrierNormal: {fileID: 1473247227760020, guid: 9521a4bb942f58a479dbb9110861af21,
+  barrierRed: {fileID: 1366876102572660, guid: 1f4f0f0461475174594f5bce8def39d3, type: 2}
+  barrierNormal: {fileID: 1961145739663300, guid: 547facc7f02e61f498c8a9be809dfbc2,
     type: 2}
   rotationSpeed: 8000
 --- !u!135 &1273975189
@@ -13347,7 +13358,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -773209231
+  randomSeed: -1400504192
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -25,7 +25,7 @@ public class RangedEnemyController : MonoBehaviour
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        InvokeRepeating("FollowTarget", 0.0f, 0.1f);
+        InvokeRepeating("FollowTarget", 0.0f, 0.2f);
         this.transform.localPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
     }
     /*
@@ -65,7 +65,7 @@ public class RangedEnemyController : MonoBehaviour
 
         foreach(GameObject beacon in gm.GetComponent<PlayerStats>().beacons)
         {
-            if(Vector3.Distance(this.transform.position, mytarget.transform.position) > Vector3.Distance(this.transform.position, beacon.transform.position))
+            if(Vector3.Distance(this.transform.position, mytarget.transform.position) - 2.0f > Vector3.Distance(this.transform.position, beacon.transform.position))
             {
                 mytarget = beacon;
             }

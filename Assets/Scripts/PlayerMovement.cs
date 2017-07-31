@@ -6,12 +6,21 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 2.0f;
     public float maxVelocity = 2.0f;
+    public float dropEnergyRate;
+    PlayerStats gm;
 
-    void Start () {
-		
-	}
-	
-	void Update () {
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerStats>();
+    }
+
+    void Update () {
+        //lose energy if it is moving
+        if (this.GetComponent<Rigidbody>().velocity.magnitude > 0.1f)
+        {
+            gm.LoseHealth(dropEnergyRate * Time.deltaTime);
+        }
+
         Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
