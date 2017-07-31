@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33192206990794960}
   - component: {fileID: 23735005140853100}
   - component: {fileID: 208243066020137008}
+  - component: {fileID: 114336178428620190}
   - component: {fileID: 65925698019491798}
   m_Layer: 10
   m_Name: Beacon
@@ -94,6 +95,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.018090442, y: 0.018090446, z: 0.015732264}
   m_Center: {x: -0.00001044618, y: -0.000052511237, z: -0.007948634}
+--- !u!114 &114336178428620190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274566438744376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234b2ee3fec958f41ab1773cd0a69ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!208 &208243066020137008
 NavMeshObstacle:
   m_ObjectHideFlags: 1

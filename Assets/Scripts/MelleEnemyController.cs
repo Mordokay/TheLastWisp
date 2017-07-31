@@ -18,7 +18,7 @@ public class MelleEnemyController : MonoBehaviour
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        InvokeRepeating("FollowTarget", 0.0f, 0.2f);
+        InvokeRepeating("FollowTarget", 0.0f, 0.5f);
     }
 
     /*
@@ -38,6 +38,7 @@ public class MelleEnemyController : MonoBehaviour
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
             gm.GetComponent<PlayerStats>().playerXP += xpGain;
             Destroy(this.gameObject);
+            gm.GetComponent<PlayerStats>().enemyCount -= 1;
         }
     }
 

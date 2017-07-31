@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 33157641435443010}
   - component: {fileID: 23503312369031060}
   - component: {fileID: 65216251376557432}
+  - component: {fileID: 114118068721741400}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Obstacle
@@ -89,6 +90,7 @@ GameObject:
   - component: {fileID: 33791711753014428}
   - component: {fileID: 23377160820476374}
   - component: {fileID: 65357961303724756}
+  - component: {fileID: 114068003369028266}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Obstacle
@@ -339,6 +341,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.03, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114068003369028266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777931398565962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234b2ee3fec958f41ab1773cd0a69ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114118068721741400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709812667868588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234b2ee3fec958f41ab1773cd0a69ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198008268359310232
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -13,6 +13,8 @@ public class ItemDropper : MonoBehaviour {
     public GameObject beaconGreen;
     public GameObject beaconRed;
     public GameObject beaconNormal;
+    public GameObject beaconNormalUp2;
+    public GameObject beaconNormalUp3;
 
     GameObject temporaryBarrierGreen;
     GameObject temporaryBarrierRed;
@@ -20,6 +22,9 @@ public class ItemDropper : MonoBehaviour {
     public GameObject barrierGreen;
     public GameObject barrierRed;
     public GameObject barrierNormal;
+    public GameObject barrierNormalUp2;
+    public GameObject barrierNormalUp3;
+
     float barrierRotation = 0;
     public float rotationSpeed;
 
@@ -86,7 +91,19 @@ public class ItemDropper : MonoBehaviour {
                 {
                     if (temporaryBeaconGreen && temporaryBeaconGreen.activeSelf)
                     {
-                        GameObject myBeacon = Instantiate(beaconNormal) as GameObject;
+                        GameObject myBeacon = new GameObject();
+                        switch (gm.GetComponent<PlayerStats>().beaconLevel)
+                        {
+                            case 1:
+                                myBeacon = Instantiate(beaconNormal) as GameObject;
+                                break;
+                            case 2:
+                                myBeacon = Instantiate(beaconNormalUp2) as GameObject;
+                                break;
+                            case 3:
+                                myBeacon = Instantiate(beaconNormalUp3) as GameObject;
+                                break;
+                        }
                         myBeacon.transform.position = hit.point;
                         gm.GetComponent<PlayerStats>().beacons.Add(myBeacon);
                         Destroy(temporaryBeaconGreen);
@@ -153,7 +170,19 @@ public class ItemDropper : MonoBehaviour {
                 {
                     if (temporaryBarrierGreen && temporaryBarrierGreen.activeSelf)
                     {
-                        GameObject myBarrier = Instantiate(barrierNormal) as GameObject;
+                        GameObject myBarrier = new GameObject();
+                        switch (gm.GetComponent<PlayerStats>().barrierLevel)
+                        {
+                            case 1:
+                                myBarrier = Instantiate(barrierNormal) as GameObject;
+                                break;
+                            case 2:
+                                myBarrier = Instantiate(barrierNormalUp2) as GameObject;
+                                break;
+                            case 3:
+                                myBarrier = Instantiate(barrierNormalUp3) as GameObject;
+                                break;
+                        }
                         myBarrier.transform.position = hit.point;
                         myBarrier.transform.rotation = Quaternion.Euler(0, barrierRotation, 0);
                         Destroy(temporaryBarrierGreen);

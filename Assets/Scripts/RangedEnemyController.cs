@@ -25,7 +25,7 @@ public class RangedEnemyController : MonoBehaviour
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        InvokeRepeating("FollowTarget", 0.0f, 0.2f);
+        InvokeRepeating("FollowTarget", 0.0f, 0.5f);
         this.transform.localPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
     }
     /*
@@ -45,6 +45,7 @@ public class RangedEnemyController : MonoBehaviour
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
             gm.GetComponent<PlayerStats>().playerXP += xpGain;
             Destroy(this.gameObject);
+            gm.GetComponent<PlayerStats>().enemyCount -= 1;
         }
     }
 
