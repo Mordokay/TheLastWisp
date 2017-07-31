@@ -7184,27 +7184,33 @@ MonoBehaviour:
     - {fileID: 21300000, guid: aa3025a7c3eeb5841819d887a63bffc9, type: 3}
     - {fileID: 21300000, guid: 760789f70260805429ef821df0eac585, type: 3}
     - {fileID: 21300000, guid: 2e541bfb9c9fc5d4fb8e5574b6d957ec, type: 3}
+    - {fileID: 21300000, guid: af38bc26dbc776044ae5b6b321c6010f, type: 3}
   - layouts:
     - {fileID: 21300000, guid: 8b50a44f0cced3442bf28e1db68d3441, type: 3}
     - {fileID: 21300000, guid: a6e46cf4495549642bc58ac78d1ab1e6, type: 3}
     - {fileID: 21300000, guid: 8440a49e96c23c24faef545ece77b693, type: 3}
+    - {fileID: 21300000, guid: 6c121bf91cad6b14c9e8013a076a0072, type: 3}
   - layouts:
     - {fileID: 21300000, guid: 726167b926246cc4baf4f1ab4654165d, type: 3}
     - {fileID: 21300000, guid: 20c3f43d5fb731d44b6b047bdb71b8fb, type: 3}
     - {fileID: 21300000, guid: f50a2ddae7506fb438ad65e49c821435, type: 3}
+    - {fileID: 21300000, guid: f9e40cc32d2965746ae71406b5bb91bd, type: 3}
   barrierButtonLayouts:
   - layouts:
     - {fileID: 21300000, guid: 6f3bfc9dd1603b6469ef29fed960f53c, type: 3}
     - {fileID: 21300000, guid: acf6d65f008e7184ab089269015bfc7f, type: 3}
     - {fileID: 21300000, guid: 2a1d656ead0e118498d92674845ff103, type: 3}
+    - {fileID: 21300000, guid: 3a5df18ce97aa2246bde34564d28ca79, type: 3}
   - layouts:
     - {fileID: 21300000, guid: 746a39ae466a40647b1c230e36e4e641, type: 3}
     - {fileID: 21300000, guid: 2ca51b2e1e0c54d47b69119e8d6cb1aa, type: 3}
     - {fileID: 21300000, guid: a12ce2c11d8268f48b82f448f09c6671, type: 3}
+    - {fileID: 21300000, guid: 42cb418b563ae924c9616e4f7ddb2352, type: 3}
   - layouts:
     - {fileID: 21300000, guid: 409b637d1466c6c41986f430705ce579, type: 3}
     - {fileID: 21300000, guid: 88694847ec4e1c04b87058339ca81c3d, type: 3}
     - {fileID: 21300000, guid: bc1b222aafcfd0a48b70df2fa9dab381, type: 3}
+    - {fileID: 21300000, guid: 918c7f81681922247872992134916e1c, type: 3}
   rockNormalCount: 0
   rockGlowCount: 0
   maxGlowRocks: 0
@@ -7233,7 +7239,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1151143217045894, guid: 3255661004aa21747a9b74fac3202adf, type: 2}
   - {fileID: 1683036784096024, guid: 7bf141cc86a5e5446aa1253f8873684c, type: 2}
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 1
   timeSinceLastSpawn: 0
   enemyLimit: 50
 --- !u!1 &1035183996
@@ -11440,15 +11446,19 @@ MonoBehaviour:
   beaconRed: {fileID: 1373763015748790, guid: 6803b38260ebc454480ac174b431fde0, type: 2}
   beaconNormal: {fileID: 1274566438744376, guid: 38d5ce941f31c804e9b43ef947004302,
     type: 2}
-  beaconNormalUp2: {fileID: 0}
-  beaconNormalUp3: {fileID: 0}
+  beaconNormalUp2: {fileID: 1147231248385126, guid: 6710e39d12cdad34ab2dd33b678b470b,
+    type: 2}
+  beaconNormalUp3: {fileID: 1335505799133454, guid: 4f8eb8bdb1466b742a808f8996a07af3,
+    type: 2}
   barrierGreen: {fileID: 1587622121983756, guid: 3aeb1ee579591d6458312966bd18e6ae,
     type: 2}
   barrierRed: {fileID: 1366876102572660, guid: 1f4f0f0461475174594f5bce8def39d3, type: 2}
   barrierNormal: {fileID: 1961145739663300, guid: 547facc7f02e61f498c8a9be809dfbc2,
     type: 2}
-  barrierNormalUp2: {fileID: 0}
-  barrierNormalUp3: {fileID: 0}
+  barrierNormalUp2: {fileID: 1857933773631792, guid: 40edb0e7b725fd0488955cfe862744ab,
+    type: 2}
+  barrierNormalUp3: {fileID: 1933045720486142, guid: 24770a458642caf47a1abf31bda89b4e,
+    type: 2}
   rotationSpeed: 8000
 --- !u!135 &1273975189
 SphereCollider:
