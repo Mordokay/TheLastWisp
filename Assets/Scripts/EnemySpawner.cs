@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public List<GameObject> enemies;
-    public List<GameObject> spawnPoints;
 
     public float timeBetweenSpawns;
     public float timeSinceLastSpawn;

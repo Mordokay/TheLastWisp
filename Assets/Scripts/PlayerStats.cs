@@ -14,7 +14,10 @@ public class PlayerStats : MonoBehaviour {
     bool isGainingHealth;
     public Light playerLight;
     public Image deposit;
-
+    public Image beaconButton;
+    public Image barrierButton;
+    public List<ButtonLayouts> beaconButtonLayouts;
+    public List<ButtonLayouts> barrierButtonLayouts;
     public int[,] rocks;
     public GameObject[,] rockObjects;
     public int rockNormalCount = 0;
@@ -85,6 +88,7 @@ public class PlayerStats : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[2];
                 player.GetComponent<ItemDropper>().CleanBarriers();
                 droppingBarrier = false;
                 if (droppingBeacon)
@@ -97,8 +101,15 @@ public class PlayerStats : MonoBehaviour {
                     droppingBeacon = true;
                 }
             }
+
+            if (Input.GetKeyUp(KeyCode.Alpha1))
+            {
+                beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[1];
+            }
+
             if (Input.GetKeyDown(KeyCode.Alpha2) && upgradePoints == 0)
             {
+                barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[2];
                 droppingBeacon = false;
                 player.GetComponent<ItemDropper>().CleanBeacons();
                 if (droppingBarrier)
@@ -110,6 +121,11 @@ public class PlayerStats : MonoBehaviour {
                 {
                     droppingBarrier = true;
                 }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha2))
+            {
+                barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[1];
             }
         }
         if (finalHealth != playerLight.spotAngle)
