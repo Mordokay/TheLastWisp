@@ -16,7 +16,9 @@ public class MapTerrainGenerator : MonoBehaviour {
     [Range(0, 1)]
     public float persistence;
     public float lacunarity;
-
+    public GameObject boundary;
+    public GameObject ground;
+    public GameObject redZone;
     public bool hideObjects;
 
     public Vector2 mapCenter = Vector2.zero;
@@ -65,13 +67,51 @@ public class MapTerrainGenerator : MonoBehaviour {
         seed = PlayerPrefs.GetInt("seed");
         gm.GetComponent<PlayerStats>().rocks = new int[sizeX, sizeY];
         gm.GetComponent<PlayerStats>().rockObjects = new GameObject[sizeX, sizeY];
+        ground.transform.localScale = new Vector3(sizeX, ground.transform.localScale.y, sizeY);
+        redZone.transform.localScale = new Vector3(sizeX + 20, redZone.transform.localScale.y, sizeY + 20);
+
+        if (sizeX % 2 == 0)
+        {
+            sizeX += 1;
+        }
+
+        if (sizeY % 2 == 0)
+        {
+            sizeY += 1;
+        }
+
         CreateHeight();
+        CreateColliders();
     }
 
-    void OnInspectorGUI()
+    private void CreateColliders()
     {
-        Debug.Log("Changed something!!!");
-        //CreateHeight();
+        BoxCollider collider;
+        float offset = 0.5f;
+
+        GameObject leftbound = Instantiate(boundary) as GameObject;
+        leftbound.transform.position = new Vector3((sizeX / 2) + offset, 0, 0);
+        leftbound.transform.parent = this.transform;
+        collider = leftbound.GetComponent<BoxCollider>();
+        collider.size = new Vector3(1, collider.size.y, sizeY + 10);
+
+        GameObject upperbound = Instantiate(boundary) as GameObject;
+        upperbound.transform.position = new Vector3(0, 0, (-sizeY / 2) - offset);
+        upperbound.transform.parent = this.transform;
+        collider = upperbound.GetComponent<BoxCollider>();
+        collider.size = new Vector3(sizeX + 10, collider.size.y, 1);
+
+        GameObject rightbound = Instantiate(boundary) as GameObject;
+        rightbound.transform.position = new Vector3((-sizeX / 2) - offset, 0, 0);
+        rightbound.transform.parent = this.transform;
+        collider = rightbound.GetComponent<BoxCollider>();
+        collider.size = new Vector3(1, collider.size.y, sizeY + 10);
+
+        GameObject lowerbound = Instantiate(boundary) as GameObject;
+        lowerbound.transform.position = new Vector3(0, 0, (sizeY / 2) + offset);
+        lowerbound.transform.parent = this.transform;
+        collider = lowerbound.GetComponent<BoxCollider>();
+        collider.size = new Vector3(sizeX + 10, collider.size.y, 1);
     }
 
     void CreateHeight()

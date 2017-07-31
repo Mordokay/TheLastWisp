@@ -4061,9 +4061,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppingBeacon: 0
+  droppingBarrier: 1
   lightChangeSpeed: 10
   playerLight: {fileID: 1451034587}
   deposit: {fileID: 1192880458}
+  rockNormalCount: 0
+  rockGlowCount: 0
+  maxGlowRocks: 0
 --- !u!1 &1084244649
 GameObject:
   m_ObjectHideFlags: 0
@@ -7606,6 +7610,12 @@ MonoBehaviour:
   beaconRed: {fileID: 1373763015748790, guid: 6803b38260ebc454480ac174b431fde0, type: 2}
   beaconNormal: {fileID: 1274566438744376, guid: 38d5ce941f31c804e9b43ef947004302,
     type: 2}
+  barrierGreen: {fileID: 1653685156705138, guid: 3aeb1ee579591d6458312966bd18e6ae,
+    type: 2}
+  barrierRed: {fileID: 1845091407853536, guid: 1f4f0f0461475174594f5bce8def39d3, type: 2}
+  barrierNormal: {fileID: 1473247227760020, guid: 9521a4bb942f58a479dbb9110861af21,
+    type: 2}
+  rotationSpeed: 8000
 --- !u!135 &1273975189
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11636,6 +11646,10 @@ Prefab:
         type: 2}
       propertyPath: randomSeed
       value: 630249920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099194421409356, guid: 9521a4bb942f58a479dbb9110861af21, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9521a4bb942f58a479dbb9110861af21, type: 2}
