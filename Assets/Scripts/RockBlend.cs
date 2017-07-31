@@ -123,6 +123,14 @@ public class RockBlend : MonoBehaviour {
                 }
             }
         }
-        rend.material.Lerp(material1, material2, Chargelevel / 100);
+        //rend.material.Lerp(material1, material2, Chargelevel / 100);
+        if((this.transform.position - player.transform.position).magnitude > ((gm.GetComponent<PlayerStats>().finalHealth * 7) / 110))
+        {
+            rend.material.SetColor("_EmissionColor", Color.black);
+        }
+        else
+        {
+            rend.material.Lerp(material1, material2, Chargelevel / 100);
+        }
     }
 }

@@ -6034,8 +6034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02920936dad5ba49a2e8dbc1c8d57da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 70
-  sizeY: 70
+  sizeX: 71
+  sizeY: 71
   normalizedMode: 1
   seed: 2147483647
   offset: {x: 0, y: 0}
@@ -6060,6 +6060,42 @@ MonoBehaviour:
     maxTheshold: 0.95
     upShift: 1
     isRock: 1
+    canCharge: 0
+  - myObject: {fileID: 1598921388829202, guid: 836827d9a2354df428abc892dcd96ca0, type: 2}
+    minTheshhold: 0
+    maxTheshold: 0.1
+    upShift: 0.5
+    isRock: 0
+    canCharge: 0
+  - myObject: {fileID: 1598921388829202, guid: 836827d9a2354df428abc892dcd96ca0, type: 2}
+    minTheshhold: 0.7
+    maxTheshold: 0.77
+    upShift: 0.5
+    isRock: 0
+    canCharge: 0
+  - myObject: {fileID: 1410296339406586, guid: 1003993add316c24e9a47b5e09a0a1e2, type: 2}
+    minTheshhold: 0.05
+    maxTheshold: 0.15
+    upShift: 0.45
+    isRock: 0
+    canCharge: 0
+  - myObject: {fileID: 1598921388829202, guid: 836827d9a2354df428abc892dcd96ca0, type: 2}
+    minTheshhold: 0.32
+    maxTheshold: 0.34
+    upShift: 0.5
+    isRock: 0
+    canCharge: 0
+  - myObject: {fileID: 1410296339406586, guid: 1003993add316c24e9a47b5e09a0a1e2, type: 2}
+    minTheshhold: 0.3
+    maxTheshold: 0.35
+    upShift: 0.45
+    isRock: 0
+    canCharge: 0
+  - myObject: {fileID: 1410296339406586, guid: 1003993add316c24e9a47b5e09a0a1e2, type: 2}
+    minTheshhold: 0.76
+    maxTheshold: 0.77
+    upShift: 0.45
+    isRock: 0
     canCharge: 0
 --- !u!1 &826163831
 GameObject:
@@ -16035,7 +16071,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 69011e0a773811443aa5052a0974bcbf, type: 2}
+  - {fileID: 2100000, guid: 3c83ec298e8bf724aa5a889761a270d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -133,7 +133,7 @@ public class MapTerrainGenerator : MonoBehaviour {
                     {
                         GameObject myObj = Instantiate(el.myObject) as GameObject;
                         myObj.transform.position = new Vector3(i - sizeX / 2, 0.0f, j - sizeY / 2);
-                        myObj.transform.Translate(Vector3.up * el.upShift);
+                        myObj.transform.position = new Vector3(myObj.transform.position.x, el.upShift, myObj.transform.position.z);
                         myObj.transform.parent = this.transform;
                         if (el.isRock) {
                             if (el.canCharge)

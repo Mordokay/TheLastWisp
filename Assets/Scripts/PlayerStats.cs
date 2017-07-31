@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour {
     public float lightChangeSpeed;
     GameObject player;
     bool isLosingHealth;
-    float finalHealth;
+    public float finalHealth;
     bool isGainingHealth;
     public Light playerLight;
     public Image deposit;
