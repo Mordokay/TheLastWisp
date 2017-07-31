@@ -28,12 +28,24 @@ public class PlayerStats : MonoBehaviour {
     public int playerLevel;
     public float XPToNextLevel;
 
+    public int upgradePoints;
+    public int barrierLevel;
+    public int beaconLevel;
+    public int grenadeLevel;
+
+    public int enemyCount;
+
+    public float life;
+
     private void Start()
     {
         playerXP = 0.0f;
         playerLevel = 1;
+        barrierLevel = 1;
+        beaconLevel = 1;
+        grenadeLevel = 1;
         XPToNextLevel = XPIncreaseEachLevel;
-
+        upgradePoints = 0;
         player = GameObject.FindGameObjectWithTag("Player");
         finalHealth = playerLight.spotAngle;
         beacons = new List<GameObject>();
@@ -41,13 +53,65 @@ public class PlayerStats : MonoBehaviour {
 
     private void Update()
     {
+        if(life < 0.0f)
+        {
+            Debug.Log("LOSE GAME!!!!!");
+        }
         if(XPToNextLevel < playerXP)
         {
             playerXP -= XPToNextLevel;
             playerLevel += 1;
             XPToNextLevel += XPIncreaseEachLevel;
+            upgradePoints += 1;
         }
 
+        if (upgradePoints > 0)
+        {
+            //Removes upgrade point after selecting what upgrade the player wants
+            if (Input.GetKeyDown(KeyCode.Alpha1)){
+                beaconLevel += 1;
+                upgradePoints -= 1;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2)){
+                upgradePoints -= 1;
+                barrierLevel += 1;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)){
+                upgradePoints -= 1;
+                grenadeLevel += 1;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                player.GetComponent<ItemDropper>().CleanBarriers();
+                droppingBarrier = false;
+                if (droppingBeacon)
+                {
+                    droppingBeacon = false;
+                    player.GetComponent<ItemDropper>().CleanBeacons();
+                }
+                else
+                {
+                    droppingBeacon = true;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && upgradePoints == 0)
+            {
+                droppingBeacon = false;
+                player.GetComponent<ItemDropper>().CleanBeacons();
+                if (droppingBarrier)
+                {
+                    droppingBarrier = false;
+                    player.GetComponent<ItemDropper>().CleanBarriers();
+                }
+                else
+                {
+                    droppingBarrier = true;
+                }
+            }
+        }
         if (finalHealth != playerLight.spotAngle)
         {
             if (finalHealth < playerLight.spotAngle)
@@ -86,40 +150,25 @@ public class PlayerStats : MonoBehaviour {
                 playerLight.spotAngle += Time.deltaTime * lightChangeSpeed;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            player.GetComponent<ItemDropper>().CleanBarriers();
-            droppingBarrier = false;
-            if (droppingBeacon)
-            {
-                droppingBeacon = false;
-                player.GetComponent<ItemDropper>().CleanBeacons();
-            }
-            else
-            {
-                droppingBeacon = true;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            droppingBeacon = false;
-            player.GetComponent<ItemDropper>().CleanBeacons();
-            if (droppingBarrier)
-            {
-                droppingBarrier = false;
-                player.GetComponent<ItemDropper>().CleanBarriers();
-            }
-            else
-            {
-                droppingBarrier = true;
-            }
-        }
     }
     
     public bool isLowHealth()
     {
         return finalHealth <= 20;
+    }
+
+    public void dropLife(float value)
+    {
+        life -= value;
+    }
+
+    public void gainLife(float value)
+    {
+        life += value;
+        if(life > 110)
+        {
+            life = 100;
+        }
     }
 
     public bool isHighHealth()
@@ -130,6 +179,7 @@ public class PlayerStats : MonoBehaviour {
     public void LoseHealth(float amount)
     {
         finalHealth  -= amount;
+        dropLife(amount);
         if (finalHealth < 20)
         {
             finalHealth = 20;
@@ -139,7 +189,8 @@ public class PlayerStats : MonoBehaviour {
     public void GainHealth(float amount)
     {
         finalHealth += amount;
-        if(finalHealth > 110)
+        gainLife(amount);
+        if (finalHealth > 110)
         {
             finalHealth = 110;
             
