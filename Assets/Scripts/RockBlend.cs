@@ -27,9 +27,11 @@ public class RockBlend : MonoBehaviour {
     GameObject myParticles;
 
     Vector3 originalScale;
+    public GameObject map;
 
     void Start()
     {
+        map = GameObject.FindGameObjectWithTag("Map");
         myParticles = Instantiate(particleConsumingEnergy);
         myParticles.SetActive(false);
         myParticles.transform.parent = this.transform;
@@ -43,6 +45,33 @@ public class RockBlend : MonoBehaviour {
         timeSinceLastContaminationAttempt = Time.time;
     }
 
+    void ContaminateRock()
+    {
+        int xPos = (int)transform.position.x + (int)(map.GetComponent<MapTerrainGenerator>().sizeX / 2);
+        int yPos = (int)transform.position.z + (int)(map.GetComponent<MapTerrainGenerator>().sizeY / 2);
+
+        //Debug.Log("ContaminateRock!!!  -> " + new Vector2(this.transform.position.x, this.transform.position.z));
+       // Debug.Log("Converted!!!  -> " + new Vector2(xPos, yPos));
+
+        for (int i = xPos - 1; i <= xPos + 1; i++)
+        {
+            for (int j = yPos - 1; j <= yPos + 1; j++)
+            {
+                if(i >= 0 && j >= 0 && i < map.GetComponent<MapTerrainGenerator>().sizeX && j < map.GetComponent<MapTerrainGenerator>().sizeY)
+                {
+                    if(!(i == xPos && j == yPos) && gm.GetComponent<PlayerStats>().rocks[i, j] == 2 && gm.GetComponent<PlayerStats>().rockGlowCount < gm.GetComponent<PlayerStats>().maxGlowRocks)
+                    {
+                        gm.GetComponent<PlayerStats>().rockObjects[i, j].GetComponent<RockBlend>().CanCharge = true;
+                        gm.GetComponent<PlayerStats>().rockObjects[i, j].GetComponent<RockBlend>().Chargelevel = 1.0f;
+                        gm.GetComponent<PlayerStats>().rockGlowCount += 1;
+                        //Debug.Log("Charge on: " + i + " <> " + j + "  With rock glow count at: " + gm.GetComponent<PlayerStats>().rockGlowCount + " and max glow at :  " + gm.GetComponent<PlayerStats>().maxGlowRocks);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    
     void Update()
     {
         if (maxedGlow && (Time.time - timeSinceLastContaminationAttempt > 2.0f) && CanCharge)
@@ -52,7 +81,7 @@ public class RockBlend : MonoBehaviour {
             //There is a 1 in 20 chance that every second another wock will be contaminated
             if(chance == 44)
             {
-                Debug.Log("ContaminateRock!!!");
+                ContaminateRock();
             }
         }
         if (CanCharge)
@@ -81,6 +110,7 @@ public class RockBlend : MonoBehaviour {
                 {
                     CanCharge = false;
                     Chargelevel = 0.0f;
+                    gm.GetComponent<PlayerStats>().rockGlowCount -= 1;
                 }
                 else if (Chargelevel >= 100)
                 {

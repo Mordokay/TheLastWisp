@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 1407640167381810, guid: 1cb941be8a0dbb44ab4c244a5addb9eb,
     type: 2}
-  numberOfParticles: 20
+  maxNumberParticles: 10
   scatterSpeed: 1

@@ -23,7 +23,7 @@ public class RangedEnemyController : MonoBehaviour
         InvokeRepeating("FollowTarget", 0.0f, 0.1f);
         this.transform.localPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
     }
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
@@ -32,10 +32,15 @@ public class RangedEnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+*/
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("LightSaber"))
+        {
+            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag.Equals("Bullet"))
         {
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);

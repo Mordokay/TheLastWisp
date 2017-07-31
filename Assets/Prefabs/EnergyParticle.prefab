@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114862775262453890}
   m_Layer: 12
   m_Name: EnergyParticle
-  m_TagString: Untagged
+  m_TagString: Energy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

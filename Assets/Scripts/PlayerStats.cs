@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour {
 
     public bool droppingBeacon = true;
+    public bool droppingBarrier = true;
     public float lightChangeSpeed;
     GameObject player;
     bool isLosingHealth;
@@ -13,6 +14,12 @@ public class PlayerStats : MonoBehaviour {
     bool isGainingHealth;
     public Light playerLight;
     public Image deposit;
+
+    public int[,] rocks;
+    public GameObject[,] rockObjects;
+    public int rockNormalCount = 0;
+    public int rockGlowCount = 0;
+    public int maxGlowRocks = 0;
 
     private void Start()
     {
@@ -63,6 +70,8 @@ public class PlayerStats : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            player.GetComponent<ItemDropper>().CleanBarriers();
+            droppingBarrier = false;
             if (droppingBeacon)
             {
                 droppingBeacon = false;
@@ -71,6 +80,20 @@ public class PlayerStats : MonoBehaviour {
             else
             {
                 droppingBeacon = true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            droppingBeacon = false;
+            player.GetComponent<ItemDropper>().CleanBeacons();
+            if (droppingBarrier)
+            {
+                droppingBarrier = false;
+                player.GetComponent<ItemDropper>().CleanBarriers();
+            }
+            else
+            {
+                droppingBarrier = true;
             }
         }
     }

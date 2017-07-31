@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114341536209177668}
   m_Layer: 0
   m_Name: ChangingRock
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   particleConsumingEnergy: {fileID: 1313540766057822, guid: 0c62b8f0d5f66c74a921cf80d9c69c9d,
     type: 2}
   timeSinceLastContaminationAttempt: 0
+  map: {fileID: 0}
 --- !u!114 &114707003921245788
 MonoBehaviour:
   m_ObjectHideFlags: 1

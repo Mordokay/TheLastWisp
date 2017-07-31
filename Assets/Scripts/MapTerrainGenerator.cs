@@ -23,6 +23,8 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     float[,] noiseMap;
 
+    GameObject gm;
+
     [System.Serializable]
     public class NoiseElement{
 
@@ -59,7 +61,10 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager");
         seed = PlayerPrefs.GetInt("seed");
+        gm.GetComponent<PlayerStats>().rocks = new int[sizeX, sizeY];
+        gm.GetComponent<PlayerStats>().rockObjects = new GameObject[sizeX, sizeY];
         CreateHeight();
     }
 
@@ -90,13 +95,18 @@ public class MapTerrainGenerator : MonoBehaviour {
                         if (el.isRock) {
                             if (el.canCharge)
                             {
-
+                                gm.GetComponent<PlayerStats>().rocks[i, j] = 1;
+                                gm.GetComponent<PlayerStats>().rockObjects[i, j] = myObj;
+                                gm.GetComponent<PlayerStats>().rockGlowCount += 1;
                                 myObj.GetComponent<RockBlend>().CanCharge = true;
                                 myObj.GetComponent<RockBlend>().Chargelevel = 100;
                                 myObj.GetComponent<RockBlend>().maxedGlow = true;
                             }
                             else
                             {
+                                gm.GetComponent<PlayerStats>().rocks[i, j] = 2;
+                                gm.GetComponent<PlayerStats>().rockObjects[i, j] = myObj;
+                                gm.GetComponent<PlayerStats>().rockNormalCount += 1;
                                 myObj.GetComponent<RockBlend>().CanCharge = false;
                                 myObj.GetComponent<RockBlend>().Chargelevel = 0;
                             }
@@ -105,5 +115,7 @@ public class MapTerrainGenerator : MonoBehaviour {
                 }
             }
         }
+
+        gm.GetComponent<PlayerStats>().maxGlowRocks = (int)(gm.GetComponent<PlayerStats>().rockGlowCount * 1.5f);
     }
 }

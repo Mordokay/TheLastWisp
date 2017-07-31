@@ -18,13 +18,13 @@ public class Projectile : MonoBehaviour {
 	    	
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Shadow")
+        if (other.gameObject.tag == "Shadow")
         {
-
+            
         }
-        
+
         GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
         explosion.GetComponent<ParticleSystem>().Play();
         Destroy(explosion, 1f);
