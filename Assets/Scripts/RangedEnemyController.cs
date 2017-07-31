@@ -14,9 +14,12 @@ public class RangedEnemyController : MonoBehaviour
     public float bulletSpeed;
     float timeSinceLastShoot;
     public float shootTimeInterval;
+    GameObject gm;
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager");
+
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
@@ -47,31 +50,43 @@ public class RangedEnemyController : MonoBehaviour
         }
     }
 
-    void CheckCanShoot()
+    void CheckCanShoot(GameObject target)
     {
         if (Time.time - timeSinceLastShoot > shootTimeInterval && 
-            (this.transform.position - player.transform.position).magnitude < minDistanceToShoot)
+            (this.transform.position - target.transform.position).magnitude < minDistanceToShoot)
         {
             GameObject myProjectile = Instantiate(projectile, this.transform.position, transform.rotation);
-            Vector3 direction = (player.transform.position - this.transform.position).normalized;
+            Vector3 direction = (target.transform.position - this.transform.position).normalized;
             direction.y = 0;
             myProjectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
             timeSinceLastShoot = Time.time;
         }
     }
+    GameObject getCloserTarget() {
+        GameObject mytarget = player;
 
-    private void FollowTarget()
-    {
-        if ((this.transform.position - player.transform.position).magnitude > 4.0f)
+        foreach(GameObject beacon in gm.GetComponent<PlayerStats>().beacons)
         {
-
-            // did target move more than at least a minimum amount since last destination set?
-            if ((previousTargetPosition - player.transform.position).magnitude > 0.1f)
+            if(Vector3.Distance(this.transform.position, mytarget.transform.position) > Vector3.Distance(this.transform.position, beacon.transform.position))
             {
-                this.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-                previousTargetPosition = player.transform.position;
+                mytarget = beacon;
             }
         }
-        CheckCanShoot();
+
+        return mytarget;
+    }
+    private void FollowTarget()
+    {
+        GameObject myTarget = getCloserTarget();
+        if ((this.transform.position - myTarget.transform.position).magnitude > 4.0f)
+        {
+            // did target move more than at least a minimum amount since last destination set?
+            if ((previousTargetPosition - myTarget.transform.position).magnitude > 0.1f)
+            {
+                this.GetComponent<NavMeshAgent>().SetDestination(myTarget.transform.position);
+                previousTargetPosition = myTarget.transform.position;
+            }
+        }
+        CheckCanShoot(myTarget);
     }
 }

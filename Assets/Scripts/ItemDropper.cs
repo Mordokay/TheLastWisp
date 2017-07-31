@@ -22,6 +22,7 @@ public class ItemDropper : MonoBehaviour {
     public GameObject barrierNormal;
     float barrierRotation = 0;
     public float rotationSpeed;
+
     void Start () {
         gm = GameObject.FindGameObjectWithTag("GameManager");
 	}
@@ -87,7 +88,7 @@ public class ItemDropper : MonoBehaviour {
                     {
                         GameObject myBeacon = Instantiate(beaconNormal) as GameObject;
                         myBeacon.transform.position = hit.point;
-
+                        gm.GetComponent<PlayerStats>().beacons.Add(myBeacon);
                         Destroy(temporaryBeaconGreen);
                         Destroy(temporaryBeaconRed);
                     }

@@ -21,10 +21,13 @@ public class PlayerStats : MonoBehaviour {
     public int rockGlowCount = 0;
     public int maxGlowRocks = 0;
 
+    public List<GameObject> beacons;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         finalHealth = playerLight.spotAngle;
+        beacons = new List<GameObject>();
     }
 
     private void Update()

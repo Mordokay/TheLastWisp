@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65925698019491798}
   m_Layer: 10
   m_Name: Beacon
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

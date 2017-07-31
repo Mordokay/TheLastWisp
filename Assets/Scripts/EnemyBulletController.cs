@@ -13,7 +13,7 @@ public class EnemyBulletController : MonoBehaviour {
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Energy")
+        if (other.gameObject.tag != "Energy" && other.gameObject.tag != "RangedEnemy")
         {
             GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
             explosion.GetComponent<ParticleSystem>().Play();

@@ -9,13 +9,15 @@ public class MelleEnemyController : MonoBehaviour
     GameObject player;
     Vector3 previousTargetPosition;
     public GameObject energyParticles;
+    GameObject gm;
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager");
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        StartCoroutine(FollowTarget(100.0f, player.transform));
+        InvokeRepeating("FollowTarget", 0.0f, 0.1f);
     }
 
     /*
@@ -42,18 +44,32 @@ public class MelleEnemyController : MonoBehaviour
         }
     }
 
-    private IEnumerator FollowTarget(float range, Transform target)
+    GameObject getCloserTarget()
     {
-        while (Vector3.SqrMagnitude(transform.position - target.position) > 0.1f)
+        GameObject mytarget = player;
+
+        foreach (GameObject beacon in gm.GetComponent<PlayerStats>().beacons)
         {
-            // did target move more than at least a minimum amount since last destination set?
-            if (Vector3.SqrMagnitude(previousTargetPosition - target.position) > 1.0f)
+            if (Vector3.Distance(this.transform.position, mytarget.transform.position) > Vector3.Distance(this.transform.position, beacon.transform.position))
             {
-                this.GetComponent<NavMeshAgent>().SetDestination(target.position);
-                previousTargetPosition = target.position;
+                mytarget = beacon;
             }
-            yield return new WaitForSeconds(1f);
         }
-        yield return null;
+
+        return mytarget;
+    }
+    private void FollowTarget()
+    {
+        GameObject myTarget = getCloserTarget();
+        if ((this.transform.position - myTarget.transform.position).magnitude > 0.5f)
+        {
+
+            // did target move more than at least a minimum amount since last destination set?
+            if ((previousTargetPosition - myTarget.transform.position).magnitude > 0.1f)
+            {
+                this.GetComponent<NavMeshAgent>().SetDestination(myTarget.transform.position);
+                previousTargetPosition = myTarget.transform.position;
+            }
+        }
     }
 }
