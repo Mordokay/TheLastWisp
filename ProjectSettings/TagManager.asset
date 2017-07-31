@@ -11,7 +11,10 @@ TagManager:
   - EnemyBullet
   - LightSaber
   - Hud
-  - Boundary
+  - Map
+  - Obstacle
+  - Barrier
+  - Energy
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - EnergyParticles
   - EnemyBullet
   - RangedEnemy
-  - 
+  - Barrier
   - 
   - 
   - 

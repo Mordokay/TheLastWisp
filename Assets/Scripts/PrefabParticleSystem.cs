@@ -5,12 +5,13 @@ using UnityEngine;
 public class PrefabParticleSystem : MonoBehaviour {
 
     public GameObject prefabObject;
-    public int numberOfParticles;
+    public int maxNumberParticles;
     public float scatterSpeed;
 
     private void Start()
     {
-        for(int i = 0; i < numberOfParticles; i++)
+        int particleCount = Random.Range(0, maxNumberParticles);
+        for(int i = 0; i < particleCount; i++)
         {
             GameObject myPrefab = Instantiate(prefabObject);
             myPrefab.transform.parent = this.transform;

@@ -18,6 +18,7 @@ public class MelleEnemyController : MonoBehaviour
         StartCoroutine(FollowTarget(100.0f, player.transform));
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
@@ -26,10 +27,15 @@ public class MelleEnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("LightSaber"))
+        {
+            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag.Equals("Bullet"))
         {
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
