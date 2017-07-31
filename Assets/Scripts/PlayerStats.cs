@@ -14,7 +14,10 @@ public class PlayerStats : MonoBehaviour {
     bool isGainingHealth;
     public Light playerLight;
     public Image deposit;
-
+    public Image beaconButton;
+    public Image barrierButton;
+    public List<ButtonLayouts> beaconButtonLayouts;
+    public List<ButtonLayouts> barrierButtonLayouts;
     public int[,] rocks;
     public GameObject[,] rockObjects;
     public int rockNormalCount = 0;
@@ -27,6 +30,9 @@ public class PlayerStats : MonoBehaviour {
     public float XPIncreaseEachLevel;
     public int playerLevel;
     public float XPToNextLevel;
+
+    private int beaconLevel = 0;
+    private int barrierLevel = 0;
 
     private void Start()
     {
@@ -89,6 +95,7 @@ public class PlayerStats : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[2];
             player.GetComponent<ItemDropper>().CleanBarriers();
             droppingBarrier = false;
             if (droppingBeacon)
@@ -101,9 +108,17 @@ public class PlayerStats : MonoBehaviour {
                 droppingBeacon = true;
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[1];
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[2];
             droppingBeacon = false;
+            //alpha2.DoStateTransition(Selectable.SelectionState.Pressed) as Selectable;
             player.GetComponent<ItemDropper>().CleanBeacons();
             if (droppingBarrier)
             {
@@ -114,6 +129,11 @@ public class PlayerStats : MonoBehaviour {
             {
                 droppingBarrier = true;
             }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[1];
         }
     }
     
@@ -143,12 +163,12 @@ public class PlayerStats : MonoBehaviour {
         {
             finalHealth = 110;
             
-            if (deposit.fillAmount < 1 && (deposit.fillAmount + amount/100) <= 1)
+            /*if (deposit.fillAmount < 1 && (deposit.fillAmount + amount/100) <= 1)
             {
                 
                 deposit.fillAmount += amount/100;
             }
-            else { deposit.fillAmount = 1; }
+            else { deposit.fillAmount = 1; }*/
         }
     }
 }
