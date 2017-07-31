@@ -23,8 +23,17 @@ public class PlayerStats : MonoBehaviour {
 
     public List<GameObject> beacons;
 
+    public float playerXP;
+    public float XPIncreaseEachLevel;
+    public int playerLevel;
+    public float XPToNextLevel;
+
     private void Start()
     {
+        playerXP = 0.0f;
+        playerLevel = 1;
+        XPToNextLevel = XPIncreaseEachLevel;
+
         player = GameObject.FindGameObjectWithTag("Player");
         finalHealth = playerLight.spotAngle;
         beacons = new List<GameObject>();
@@ -32,6 +41,13 @@ public class PlayerStats : MonoBehaviour {
 
     private void Update()
     {
+        if(XPToNextLevel < playerXP)
+        {
+            playerXP -= XPToNextLevel;
+            playerLevel += 1;
+            XPToNextLevel += XPIncreaseEachLevel;
+        }
+
         if (finalHealth != playerLight.spotAngle)
         {
             if (finalHealth < playerLight.spotAngle)

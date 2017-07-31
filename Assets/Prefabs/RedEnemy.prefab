@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyParticles: {fileID: 1579404375513812, guid: 77ffc0e5e67043b4fbb9adc50aaac36b,
     type: 2}
+  xpGain: 10
 --- !u!136 &136183868036153886
 CapsuleCollider:
   m_ObjectHideFlags: 1

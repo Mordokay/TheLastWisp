@@ -16,6 +16,8 @@ public class RangedEnemyController : MonoBehaviour
     public float shootTimeInterval;
     GameObject gm;
 
+    public float xpGain;
+
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager");
@@ -38,14 +40,10 @@ public class RangedEnemyController : MonoBehaviour
 */
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("LightSaber"))
+        if (other.gameObject.tag.Equals("LightSaber") || other.gameObject.tag.Equals("Bullet"))
         {
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-        }
-        else if (other.gameObject.tag.Equals("Bullet"))
-        {
-            Instantiate(energyParticles, this.transform.position, Quaternion.identity);
+            gm.GetComponent<PlayerStats>().playerXP += xpGain;
             Destroy(this.gameObject);
         }
     }

@@ -116,6 +116,7 @@ MonoBehaviour:
   projectile: {fileID: 1030182345914682, guid: e91dbfaab05832a4ea3ffcaa90ef466c, type: 2}
   bulletSpeed: 10
   shootTimeInterval: 1
+  xpGain: 15
 --- !u!136 &136140591278926140
 CapsuleCollider:
   m_ObjectHideFlags: 1
