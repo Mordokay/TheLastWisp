@@ -8,9 +8,7 @@ public class PlayerAtackController : MonoBehaviour {
     public GameObject bullet;
     public GameObject lightSaber;
     public float bulletSpeed;
-    public float lightSaberEnergy;
     public float energyConsumptionRate;
-    public Image lightSaberBar;
     bool up;
 
     PlayerStats stats;
@@ -37,7 +35,7 @@ public class PlayerAtackController : MonoBehaviour {
 
             stats.LoseHealth(7.5f);
         }
-        if (Input.GetButtonDown("Fire2") && !stats.droppingBeacon && lightSaberEnergy > 0)
+        if (Input.GetButtonDown("Fire2") && !stats.droppingBeacon && !stats.isLowHealth())
         {
             lightSaber.gameObject.SetActive(true);
             int rand = Random.Range(0, 2);
@@ -47,11 +45,10 @@ public class PlayerAtackController : MonoBehaviour {
             }
             else { up = false; }
 
-            lightSaberEnergy -= Time.deltaTime * energyConsumptionRate;
-            lightSaberBar.fillAmount = lightSaberEnergy / 100;
+            stats.LoseHealth(Time.deltaTime * energyConsumptionRate);
         }
 
-        if (Input.GetButton("Fire2") && !stats.droppingBeacon && lightSaberEnergy > 0)
+        if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth())
         {
             if (up)
             {
@@ -59,8 +56,7 @@ public class PlayerAtackController : MonoBehaviour {
             }
             else { lightSaber.transform.RotateAround(this.gameObject.transform.position, Vector3.down, 1500 * Time.deltaTime); }
 
-            lightSaberEnergy -= Time.deltaTime * energyConsumptionRate;
-            lightSaberBar.fillAmount = lightSaberEnergy / 100;
+            stats.LoseHealth(Time.deltaTime * energyConsumptionRate);
         }
 
         if (Input.GetButtonUp("Fire2"))
