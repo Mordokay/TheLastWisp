@@ -64,7 +64,7 @@ public class RockBlend : MonoBehaviour {
                         gm.GetComponent<PlayerStats>().rockObjects[i, j].GetComponent<RockBlend>().CanCharge = true;
                         gm.GetComponent<PlayerStats>().rockObjects[i, j].GetComponent<RockBlend>().Chargelevel = 1.0f;
                         gm.GetComponent<PlayerStats>().rockGlowCount += 1;
-                        //Debug.Log("Charge on: " + i + " <> " + j + "  With rock glow count at: " + gm.GetComponent<PlayerStats>().rockGlowCount + " and max glow at :  " + gm.GetComponent<PlayerStats>().maxGlowRocks);
+                        Debug.Log("Charge on: " + i + " <> " + j + "  With rock glow count at: " + gm.GetComponent<PlayerStats>().rockGlowCount + " and max glow at :  " + gm.GetComponent<PlayerStats>().maxGlowRocks);
                         return;
                     }
                 }

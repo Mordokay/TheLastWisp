@@ -20,14 +20,23 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Shadow")
+        if (other.gameObject.tag != "Barrier")
         {
-            
+            GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
+            explosion.GetComponent<ParticleSystem>().Play();
+            Destroy(explosion, 1f);
+            Destroy(gameObject, 0f);
         }
+    }
 
-        GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
-        explosion.GetComponent<ParticleSystem>().Play();
-        Destroy(explosion, 1f);
-        Destroy(gameObject, 0f);
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
+            explosion.GetComponent<ParticleSystem>().Play();
+            Destroy(explosion, 1f);
+            Destroy(gameObject, 0f);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     public Noise.NormalizeMode normalizedMode;
     [Tooltip("Generates a map based on a number")]
-    public int seed = 1234;
+    public int seed;
     public Vector2 offset;
     public float noiseScale;
     public int octaves;
@@ -51,7 +51,6 @@ public class MapTerrainGenerator : MonoBehaviour {
     {
         sizeX = 40;
         sizeY = 40;
-        seed = 12345;
         noiseScale = 5;
         octaves = 2;
         persistence = 0.56f;
@@ -63,13 +62,6 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameManager");
-        seed = PlayerPrefs.GetInt("seed");
-        gm.GetComponent<PlayerStats>().rocks = new int[sizeX, sizeY];
-        gm.GetComponent<PlayerStats>().rockObjects = new GameObject[sizeX, sizeY];
-        ground.transform.localScale = new Vector3(sizeX, ground.transform.localScale.y, sizeY);
-        redZone.transform.localScale = new Vector3(sizeX + 20, redZone.transform.localScale.y, sizeY + 20);
-
         if (sizeX % 2 == 0)
         {
             sizeX += 1;
@@ -79,6 +71,14 @@ public class MapTerrainGenerator : MonoBehaviour {
         {
             sizeY += 1;
         }
+
+        gm = GameObject.FindGameObjectWithTag("GameManager");
+        gm.GetComponent<PlayerStats>().rocks = new int[sizeX, sizeY];
+        gm.GetComponent<PlayerStats>().rockObjects = new GameObject[sizeX, sizeY];
+        ground.transform.localScale = new Vector3(sizeX, ground.transform.localScale.y, sizeY);
+        redZone.transform.localScale = new Vector3(sizeX + 20, redZone.transform.localScale.y, sizeY + 20);
+
+        
 
         CreateHeight();
         CreateColliders();

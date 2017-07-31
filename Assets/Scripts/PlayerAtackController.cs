@@ -21,7 +21,7 @@ public class PlayerAtackController : MonoBehaviour {
 	
 	void Update () {
 
-        if (Input.GetButtonDown("Fire1") && !stats.droppingBeacon && !stats.isLowHealth())
+        if (Input.GetButtonDown("Fire1") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire2"))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -35,7 +35,7 @@ public class PlayerAtackController : MonoBehaviour {
 
             stats.LoseHealth(7.5f);
         }
-        if (Input.GetButtonDown("Fire2") && !stats.droppingBeacon && !stats.isLowHealth())
+        if (Input.GetButtonDown("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))
         {
             lightSaber.gameObject.SetActive(true);
             int rand = Random.Range(0, 2);
@@ -48,7 +48,7 @@ public class PlayerAtackController : MonoBehaviour {
             stats.LoseHealth(Time.deltaTime * energyConsumptionRate);
         }
 
-        if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth())
+        if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))
         {
             if (up)
             {
