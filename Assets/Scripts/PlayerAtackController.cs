@@ -35,7 +35,7 @@ public class PlayerAtackController : MonoBehaviour {
                 Vector3 direction = (hit.point - myBullet.transform.position).normalized;
                 direction.y = 0;
                 myBullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
-                stats.LoseHealth(7.5f);
+                stats.LoseHealth(3.0f);
 
                 GameObject myShoot = Instantiate(shootAudio);
                 myShoot.GetComponent<AudioSource>().Play();
@@ -52,7 +52,7 @@ public class PlayerAtackController : MonoBehaviour {
             }
             else { up = false; }
 
-            stats.LoseHealth(Time.deltaTime * energyConsumptionRate / 10);
+            stats.LoseHealth(Time.deltaTime * energyConsumptionRate / 20);
         }
 
         if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))

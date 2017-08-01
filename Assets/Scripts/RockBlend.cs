@@ -21,7 +21,7 @@ public class RockBlend : MonoBehaviour {
 
     GameObject player;
     GameObject gm;
-    public float powerTransferRatio = 5.0f;
+    public float powerTransferRatio;
     public GameObject particleConsumingEnergy;
     public float timeSinceLastContaminationAttempt;
     GameObject myParticles;
@@ -77,7 +77,7 @@ public class RockBlend : MonoBehaviour {
         if (maxedGlow && (Time.time - timeSinceLastContaminationAttempt > 2.0f) && CanCharge)
         {
             timeSinceLastContaminationAttempt = Time.time;
-            int chance = Random.Range(0, 100);
+            int chance = Random.Range(0, 50);
             //There is a 1 in 20 chance that every second another wock will be contaminated
             if(chance == 44)
             {

@@ -11635,7 +11635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxVelocity: 5
-  dropEnergyRate: 3
+  dropEnergyRate: 1
 --- !u!54 &1273975186
 Rigidbody:
   m_ObjectHideFlags: 0
