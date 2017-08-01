@@ -40,6 +40,10 @@ public class PlayerStats : MonoBehaviour {
 
     public float life;
 
+    public GameObject gameOver;
+    public Text time;
+    public Text kills;
+
     private void Start()
     {
         life = 100;
@@ -60,7 +64,10 @@ public class PlayerStats : MonoBehaviour {
         life = Mathf.Clamp(life, 0.0f, 100.0f);
         if(life == 0.0f)
         {
-            Debug.Log("Player Lose Game");
+            time.text = "TIME: " + Time.timeSinceLevelLoad;
+            kills.text = "KILLS: " + enemiesKilled;
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
         }
         if (XPToNextLevel < playerXP)
         {
@@ -182,9 +189,9 @@ public class PlayerStats : MonoBehaviour {
     {
         finalHealth  -= amount;
         life -= amount;
-        if (finalHealth < 20)
+        if (finalHealth < 10)
         {
-            finalHealth = 20;
+            finalHealth = 10;
         }
     }
 

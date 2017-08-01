@@ -14,6 +14,7 @@ public class ManageScene : MonoBehaviour {
         {
             PlayerPrefs.SetInt("Seed", int.Parse(seedField.text));
             SceneManager.LoadScene("mainScene");
+            Time.timeScale = 1;
         }
     }
 
