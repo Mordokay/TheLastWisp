@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     int mapY;
     public int enemyLimit;
     public float timeSinceEnemyIncrease;
+    bool initialSpawn = true;
 
     private void Start()
     {
@@ -47,40 +48,51 @@ public class EnemySpawner : MonoBehaviour
         return spawnPos;
     }
 
+    void SpawnEnemy()
+    {
+        Vector3 spawnPos = getSpawn();
+        //Debug.Log("Spawn pos: " + spawnPos);
+        NavMeshHit hit;
+        int numTries = 0;
+        bool blocked = NavMesh.Raycast(spawnPos, spawnPos + Vector3.down * 40, out hit, NavMesh.AllAreas);
+        while (!(!blocked && spawnPos.x < (map.GetComponent<MapTerrainGenerator>().sizeX / 2) &&
+            spawnPos.z < (map.GetComponent<MapTerrainGenerator>().sizeY / 2) &&
+            spawnPos.z > (-map.GetComponent<MapTerrainGenerator>().sizeY / 2) &&
+            spawnPos.x > (-map.GetComponent<MapTerrainGenerator>().sizeX / 2)) && numTries < 5)
+        {
+            spawnPos = getSpawn();
+            numTries += 1;
+        }
+        numTries = 0;
+        if (spawnPos != Vector3.zero)
+        {
+            Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(spawnPos.x, 1.0f, spawnPos.z), Quaternion.identity);
+            gm.GetComponent<PlayerStats>().enemyCount += 1;
+        }
+    }
     void Update()
     {
+        if (initialSpawn)
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                SpawnEnemy();
+            }
+            initialSpawn = false;
+        }
         timeSinceEnemyIncrease += Time.deltaTime;
-        if (timeSinceEnemyIncrease > 10.0f)
+        if (timeSinceEnemyIncrease > 15.0f)
         {
             enemyLimit += 1;
             timeSinceEnemyIncrease = 0.0f;
         }
-        if (gm.GetComponent<PlayerStats>().enemyCount < enemyLimit + (int)(Time.timeSinceLevelLoad / 20))
+        if (gm.GetComponent<PlayerStats>().enemyCount < enemyLimit)
         {
             timeSinceLastSpawn += Time.deltaTime;
             if (timeSinceLastSpawn > timeBetweenSpawns)
             {
                 timeSinceLastSpawn = 0;
-
-                Vector3 spawnPos = getSpawn();
-                //Debug.Log("Spawn pos: " + spawnPos);
-                NavMeshHit hit;
-                int numTries = 0;
-                bool blocked = NavMesh.Raycast(spawnPos, spawnPos + Vector3.down * 40, out hit, NavMesh.AllAreas);
-                while (!(!blocked && spawnPos.x < (map.GetComponent<MapTerrainGenerator>().sizeX / 2) &&
-                    spawnPos.z < (map.GetComponent<MapTerrainGenerator>().sizeY / 2) &&
-                    spawnPos.z > (-map.GetComponent<MapTerrainGenerator>().sizeY / 2) &&
-                    spawnPos.x > (-map.GetComponent<MapTerrainGenerator>().sizeX / 2)) && numTries < 5)
-                {
-                    spawnPos = getSpawn();
-                    numTries += 1;
-                }
-                numTries = 0;
-                if (spawnPos != Vector3.zero)
-                {
-                    Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(spawnPos.x, 1.0f, spawnPos.z), Quaternion.identity);
-                    gm.GetComponent<PlayerStats>().enemyCount += 1;
-                }
+                SpawnEnemy();
             }
         }
     }

@@ -25,7 +25,7 @@ public class MelleEnemyController : MonoBehaviour
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        InvokeRepeating("FollowTarget", 0.0f, 0.1f);
+        InvokeRepeating("FollowTarget", 0.0f, 0.2f);
     }
 
     /*
