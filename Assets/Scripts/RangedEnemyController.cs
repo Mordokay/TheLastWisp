@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -74,8 +75,8 @@ public class RangedEnemyController : MonoBehaviour
     }
     GameObject getCloserTarget() {
         GameObject mytarget = player;
-
-        foreach(GameObject beacon in gm.GetComponent<PlayerStats>().beacons)
+        gm.GetComponent<PlayerStats>().beacons = gm.GetComponent<PlayerStats>().beacons.Where(item => item != null).ToList();
+        foreach (GameObject beacon in gm.GetComponent<PlayerStats>().beacons)
         {
             if(Vector3.Distance(this.transform.position, mytarget.transform.position) - 2.0f > Vector3.Distance(this.transform.position, beacon.transform.position))
             {
