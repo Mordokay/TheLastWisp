@@ -63,6 +63,8 @@ public class MapTerrainGenerator : MonoBehaviour {
 
     void Start()
     {
+        seed = PlayerPrefs.GetInt("Seed");
+
         if (sizeX % 2 == 0)
         {
             sizeX += 1;
