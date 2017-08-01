@@ -15,9 +15,11 @@ public class EnemySpawner : MonoBehaviour
     int mapX;
     int mapY;
     public int enemyLimit;
+    public float timeSinceEnemyIncrease;
 
     private void Start()
     {
+        timeSinceEnemyIncrease = 0.0f;
         map = GameObject.FindGameObjectWithTag("Map");
         gm = GameObject.FindGameObjectWithTag("GameManager");
         mapX = map.GetComponent<MapTerrainGenerator>().sizeX;
@@ -47,7 +49,12 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        
+        timeSinceEnemyIncrease += Time.deltaTime;
+        if (timeSinceEnemyIncrease > 10.0f)
+        {
+            enemyLimit += 1;
+            timeSinceEnemyIncrease = 0.0f;
+        }
         if (gm.GetComponent<PlayerStats>().enemyCount < enemyLimit + (int)(Time.timeSinceLevelLoad / 20))
         {
             timeSinceLastSpawn += Time.deltaTime;
