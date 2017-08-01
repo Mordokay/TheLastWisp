@@ -17,15 +17,16 @@ public class RangedEnemyController : MonoBehaviour
     GameObject gm;
 
     public float xpGain;
+    public int life;
 
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager");
-
+        life = 100;
         previousTargetPosition = new Vector3(float.PositiveInfinity, float.PositiveInfinity);
         player = GameObject.FindGameObjectWithTag("Player");
         this.GetComponent<NavMeshAgent>().destination = player.transform.position;
-        InvokeRepeating("FollowTarget", 0.0f, 0.5f);
+        InvokeRepeating("FollowTarget", 0.0f, 0.1f);
         this.transform.localPosition = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z);
     }
     /*
@@ -40,12 +41,22 @@ public class RangedEnemyController : MonoBehaviour
 */
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("LightSaber") || other.gameObject.tag.Equals("Bullet"))
+        if (other.gameObject.tag.Equals("Bullet"))
+        {
+            life -= 50;
+            gm.GetComponent<PlayerStats>().playerXP += xpGain;
+        }
+        else if (other.gameObject.tag.Equals("LightSaber")){
+            life -= 40;
+            gm.GetComponent<PlayerStats>().playerXP += xpGain / 5;
+        }
+
+        if (life <= 0)
         {
             Instantiate(energyParticles, this.transform.position, Quaternion.identity);
-            gm.GetComponent<PlayerStats>().playerXP += xpGain;
             Destroy(this.gameObject);
             gm.GetComponent<PlayerStats>().enemyCount -= 1;
+            gm.GetComponent<PlayerStats>().enemiesKilled += 1;
         }
     }
 

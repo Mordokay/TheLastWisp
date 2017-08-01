@@ -28,6 +28,9 @@ public class ItemDropper : MonoBehaviour {
     float barrierRotation = 0;
     public float rotationSpeed;
 
+    public float barrierCost;
+    public float beaconCost;
+
     void Start () {
         gm = GameObject.FindGameObjectWithTag("GameManager");
 	}
@@ -92,20 +95,25 @@ public class ItemDropper : MonoBehaviour {
                     if (temporaryBeaconGreen && temporaryBeaconGreen.activeSelf)
                     {
                         GameObject myBeacon = new GameObject();
+
                         switch (gm.GetComponent<PlayerStats>().beaconLevel)
                         {
                             case 1:
                                 myBeacon = Instantiate(beaconNormal) as GameObject;
+                                Destroy(myBeacon, 10.0f);
                                 break;
                             case 2:
                                 myBeacon = Instantiate(beaconNormalUp2) as GameObject;
+                                Destroy(myBeacon, 20.0f);
                                 break;
                             case 3:
                                 myBeacon = Instantiate(beaconNormalUp3) as GameObject;
+                                Destroy(myBeacon, 30.0f);
                                 break;
                         }
                         myBeacon.transform.position = hit.point;
                         gm.GetComponent<PlayerStats>().beacons.Add(myBeacon);
+                        gm.GetComponent<PlayerStats>().LoseHealth(beaconCost);
                         Destroy(temporaryBeaconGreen);
                         Destroy(temporaryBeaconRed);
                     }
@@ -185,6 +193,19 @@ public class ItemDropper : MonoBehaviour {
                         }
                         myBarrier.transform.position = hit.point;
                         myBarrier.transform.rotation = Quaternion.Euler(0, barrierRotation, 0);
+                        switch (gm.GetComponent<PlayerStats>().barrierLevel)
+                        {
+                            case 1:
+                                Destroy(myBarrier, 10.0f);
+                                break;
+                            case 2:
+                                Destroy(myBarrier, 20.0f);
+                                break;
+                            case 3:
+                                Destroy(myBarrier, 30.0f);
+                                break;
+                        }
+                        gm.GetComponent<PlayerStats>().LoseHealth(barrierCost);
                         Destroy(temporaryBarrierGreen);
                         Destroy(temporaryBarrierRed);
                     }

@@ -45,7 +45,7 @@ public class PlayerAtackController : MonoBehaviour {
             }
             else { up = false; }
 
-            stats.LoseHealth(Time.deltaTime * energyConsumptionRate);
+            stats.LoseHealth(Time.deltaTime * energyConsumptionRate / 10);
         }
 
         if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))
