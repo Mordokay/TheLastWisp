@@ -37,11 +37,14 @@ public class PlayerStats : MonoBehaviour {
     public int grenadeLevel;
 
     public int enemyCount;
+    public int enemiesKilled;
 
     public float life;
 
     private void Start()
     {
+        life = 100;
+        enemiesKilled = 0;
         playerXP = 0.0f;
         playerLevel = 1;
         barrierLevel = 1;
@@ -56,11 +59,12 @@ public class PlayerStats : MonoBehaviour {
 
     private void Update()
     {
-        if(life < 0.0f)
+        life = Mathf.Clamp(life, 0.0f, 100.0f);
+        if(life == 0.0f)
         {
-            Debug.Log("LOSE GAME!!!!!");
+            Debug.Log("Player Lose Game");
         }
-        if(XPToNextLevel < playerXP)
+        if (XPToNextLevel < playerXP)
         {
             playerXP -= XPToNextLevel;
             playerLevel += 1;
@@ -173,20 +177,6 @@ public class PlayerStats : MonoBehaviour {
         return finalHealth <= 20;
     }
 
-    public void dropLife(float value)
-    {
-        life -= value;
-    }
-
-    public void gainLife(float value)
-    {
-        life += value;
-        if(life > 110)
-        {
-            life = 100;
-        }
-    }
-
     public bool isHighHealth()
     {
         return finalHealth >= 110;
@@ -195,7 +185,7 @@ public class PlayerStats : MonoBehaviour {
     public void LoseHealth(float amount)
     {
         finalHealth  -= amount;
-        dropLife(amount);
+        life -= amount;
         if (finalHealth < 20)
         {
             finalHealth = 20;
@@ -205,7 +195,7 @@ public class PlayerStats : MonoBehaviour {
     public void GainHealth(float amount)
     {
         finalHealth += amount;
-        gainLife(amount);
+        life += amount;
         if (finalHealth > 110)
         {
             finalHealth = 110;

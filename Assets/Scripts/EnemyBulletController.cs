@@ -5,9 +5,11 @@ using UnityEngine;
 public class EnemyBulletController : MonoBehaviour {
 
     public GameObject explosionPS;
+    GameObject gm;
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager");
         Destroy(this.gameObject, 2f);
     }
     
@@ -15,6 +17,11 @@ public class EnemyBulletController : MonoBehaviour {
     {
         if (other.gameObject.tag != "Energy" && other.gameObject.tag != "RangedEnemy")
         {
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                gm.GetComponent<PlayerStats>().LoseHealth(10.0f);
+            }
+
             GameObject explosion = Instantiate(explosionPS, this.transform.position, Quaternion.identity) as GameObject;
             explosion.GetComponent<ParticleSystem>().Play();
             Destroy(explosion, 1f);

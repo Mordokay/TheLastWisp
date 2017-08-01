@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
                 timeSinceLastSpawn = 0;
 
                 Vector3 spawnPos = getSpawn();
-                Debug.Log("Spawn pos: " + spawnPos);
+                //Debug.Log("Spawn pos: " + spawnPos);
                 NavMeshHit hit;
                 int numTries = 0;
                 bool blocked = NavMesh.Raycast(spawnPos, spawnPos + Vector3.down * 40, out hit, NavMesh.AllAreas);
@@ -67,8 +67,12 @@ public class EnemySpawner : MonoBehaviour
                     spawnPos = getSpawn();
                     numTries += 1;
                 }
-                Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(spawnPos.x, 1.0f, spawnPos.z), Quaternion.identity);
-                gm.GetComponent<PlayerStats>().enemyCount += 1;
+                numTries = 0;
+                if (spawnPos != Vector3.zero)
+                {
+                    Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(spawnPos.x, 1.0f, spawnPos.z), Quaternion.identity);
+                    gm.GetComponent<PlayerStats>().enemyCount += 1;
+                }
             }
         }
     }

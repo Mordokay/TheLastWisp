@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 208267531500952648}
   - component: {fileID: 114124829367487806}
   - component: {fileID: 65660859390363576}
+  - component: {fileID: 114511987086279182}
   m_Layer: 10
   m_Name: Beacon Up3
   m_TagString: Obstacle
@@ -106,6 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234b2ee3fec958f41ab1773cd0a69ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114511987086279182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335505799133454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dac2b133b53474494c76612ce280f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 300
+  energyParticles: {fileID: 1941653645878542, guid: a68d0af37ce3b56428b835058cfecc38,
+    type: 2}
 --- !u!208 &208267531500952648
 NavMeshObstacle:
   m_ObjectHideFlags: 1
