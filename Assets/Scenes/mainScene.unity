@@ -7353,7 +7353,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1151143217045894, guid: 3255661004aa21747a9b74fac3202adf, type: 2}
   - {fileID: 1683036784096024, guid: 7bf141cc86a5e5446aa1253f8873684c, type: 2}
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 5
   timeSinceLastSpawn: 0
   enemyLimit: 50
 --- !u!1 &1035183996
