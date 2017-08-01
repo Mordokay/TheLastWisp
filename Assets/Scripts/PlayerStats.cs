@@ -88,60 +88,60 @@ public class PlayerStats : MonoBehaviour {
 
         if (upgradePoints > 0)
         {
+            barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[3];
+            beaconButton.sprite = beaconButtonLayouts[beaconLevel - 1].layouts[3];
             //Removes upgrade point after selecting what upgrade the player wants
             if (Input.GetKeyDown(KeyCode.Alpha1) && beaconLevel < 3)
             {
                 beaconLevel += 1;
                 upgradePoints -= 1;
+                barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[1];
+                beaconButton.sprite = beaconButtonLayouts[beaconLevel - 1].layouts[1];
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && barrierLevel < 3)
             {
                 upgradePoints -= 1;
                 barrierLevel += 1;
+                barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[1];
+                beaconButton.sprite = beaconButtonLayouts[beaconLevel - 1].layouts[1];
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[2];
+                barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[1];
                 player.GetComponent<ItemDropper>().CleanBarriers();
                 droppingBarrier = false;
                 if (droppingBeacon)
                 {
+                    beaconButton.sprite = beaconButtonLayouts[beaconLevel-1].layouts[1];
                     droppingBeacon = false;
                     player.GetComponent<ItemDropper>().CleanBeacons();
                 }
                 else
                 {
+                    beaconButton.sprite = beaconButtonLayouts[beaconLevel-1].layouts[2];
                     droppingBeacon = true;
                 }
             }
 
-            if (Input.GetKeyUp(KeyCode.Alpha1))
-            {
-                beaconButton.sprite = beaconButtonLayouts[beaconLevel].layouts[1];
-            }
-
             if (Input.GetKeyDown(KeyCode.Alpha2) && upgradePoints == 0)
             {
-                barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[2];
+                beaconButton.sprite = beaconButtonLayouts[beaconLevel-1].layouts[1];
                 droppingBeacon = false;
                 player.GetComponent<ItemDropper>().CleanBeacons();
                 if (droppingBarrier)
                 {
+                    barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[1];
                     droppingBarrier = false;
                     player.GetComponent<ItemDropper>().CleanBarriers();
                 }
                 else
                 {
+                    barrierButton.sprite = barrierButtonLayouts[barrierLevel - 1].layouts[2];
                     droppingBarrier = true;
                 }
-            }
-
-            if (Input.GetKeyUp(KeyCode.Alpha2))
-            {
-                barrierButton.sprite = barrierButtonLayouts[barrierLevel].layouts[1];
             }
         }
         if (finalHealth != playerLight.spotAngle)

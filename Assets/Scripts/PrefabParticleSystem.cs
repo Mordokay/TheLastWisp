@@ -10,7 +10,7 @@ public class PrefabParticleSystem : MonoBehaviour {
 
     private void Start()
     {
-        int particleCount = Random.Range(0, maxNumberParticles);
+        int particleCount = Random.Range(5, maxNumberParticles);
         for(int i = 0; i < particleCount; i++)
         {
             GameObject myPrefab = Instantiate(prefabObject);

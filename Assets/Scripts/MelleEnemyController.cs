@@ -99,7 +99,7 @@ public class MelleEnemyController : MonoBehaviour
             timeSinceLastAtack = Time.time;
             if (myTarget.tag.Equals("Player"))
             {
-                gm.GetComponent<PlayerStats>().LoseHealth(20.0f);
+                gm.GetComponent<PlayerStats>().LoseHealth(10.0f);
             }
         }
     }
