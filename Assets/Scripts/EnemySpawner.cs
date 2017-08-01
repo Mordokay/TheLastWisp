@@ -72,6 +72,9 @@ public class EnemySpawner : MonoBehaviour
     }
     void Update()
     {
+
+        timeBetweenSpawns -= Time.deltaTime / 400;
+        timeBetweenSpawns = Mathf.Clamp(timeBetweenSpawns, 1.5f, 3.0f);
         if (initialSpawn)
         {
             for (int i = 0; i < 15; i++)
