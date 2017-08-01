@@ -100,15 +100,15 @@ public class ItemDropper : MonoBehaviour {
                         {
                             case 1:
                                 myBeacon = Instantiate(beaconNormal) as GameObject;
-                                Destroy(myBeacon, 10.0f);
+                                Destroy(myBeacon, 5.0f);
                                 break;
                             case 2:
                                 myBeacon = Instantiate(beaconNormalUp2) as GameObject;
-                                Destroy(myBeacon, 20.0f);
+                                Destroy(myBeacon, 7.0f);
                                 break;
                             case 3:
                                 myBeacon = Instantiate(beaconNormalUp3) as GameObject;
-                                Destroy(myBeacon, 30.0f);
+                                Destroy(myBeacon, 10.0f);
                                 break;
                         }
                         myBeacon.transform.position = hit.point;
@@ -196,13 +196,13 @@ public class ItemDropper : MonoBehaviour {
                         switch (gm.GetComponent<PlayerStats>().barrierLevel)
                         {
                             case 1:
-                                Destroy(myBarrier, 10.0f);
+                                Destroy(myBarrier, 5.0f);
                                 break;
                             case 2:
-                                Destroy(myBarrier, 20.0f);
+                                Destroy(myBarrier, 7.0f);
                                 break;
                             case 3:
-                                Destroy(myBarrier, 30.0f);
+                                Destroy(myBarrier, 10.0f);
                                 break;
                         }
                         gm.GetComponent<PlayerStats>().LoseHealth(barrierCost);
