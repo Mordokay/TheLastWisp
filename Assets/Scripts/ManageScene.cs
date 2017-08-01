@@ -16,4 +16,9 @@ public class ManageScene : MonoBehaviour {
             SceneManager.LoadScene("mainScene");
         }
     }
+
+    public void ReStartGame()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }

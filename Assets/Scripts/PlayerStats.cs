@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour {
     public int enemyCount;
     public int enemiesKilled;
 
-    public float life;
+    public GameObject gameOver;
 
     private void Start()
     {
@@ -58,9 +58,10 @@ public class PlayerStats : MonoBehaviour {
 
     private void Update()
     {
-        if(life < 0.0f)
+        if(finalHealth <= 10.0f)
         {
-            Debug.Log("LOSE GAME!!!!!");
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
         }
         if(XPToNextLevel < playerXP)
         {
@@ -171,20 +172,6 @@ public class PlayerStats : MonoBehaviour {
         return finalHealth <= 20;
     }
 
-    public void dropLife(float value)
-    {
-        life -= value;
-    }
-
-    public void gainLife(float value)
-    {
-        life += value;
-        if(life > 110)
-        {
-            life = 100;
-        }
-    }
-
     public bool isHighHealth()
     {
         return finalHealth >= 110;
@@ -193,17 +180,11 @@ public class PlayerStats : MonoBehaviour {
     public void LoseHealth(float amount)
     {
         finalHealth  -= amount;
-        dropLife(amount);
-        if (finalHealth < 20)
-        {
-            finalHealth = 20;
-        }
     }
 
     public void GainHealth(float amount)
     {
         finalHealth += amount;
-        gainLife(amount);
         if (finalHealth > 110)
         {
             finalHealth = 110;
