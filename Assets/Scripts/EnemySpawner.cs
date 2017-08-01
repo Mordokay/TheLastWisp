@@ -47,7 +47,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (gm.GetComponent<PlayerStats>().enemyCount < enemyLimit)
+        
+        if (gm.GetComponent<PlayerStats>().enemyCount < enemyLimit + (int)(Time.timeSinceLevelLoad / 20))
         {
             timeSinceLastSpawn += Time.deltaTime;
             if (timeSinceLastSpawn > timeBetweenSpawns)

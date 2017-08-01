@@ -34,7 +34,6 @@ public class PlayerStats : MonoBehaviour {
     public int upgradePoints;
     public int barrierLevel;
     public int beaconLevel;
-    public int grenadeLevel;
 
     public int enemyCount;
     public int enemiesKilled;
@@ -53,7 +52,6 @@ public class PlayerStats : MonoBehaviour {
         playerLevel = 1;
         barrierLevel = 1;
         beaconLevel = 1;
-        grenadeLevel = 1;
         XPToNextLevel = XPIncreaseEachLevel;
         upgradePoints = 0;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -82,17 +80,15 @@ public class PlayerStats : MonoBehaviour {
         if (upgradePoints > 0)
         {
             //Removes upgrade point after selecting what upgrade the player wants
-            if (Input.GetKeyDown(KeyCode.Alpha1)){
+            if (Input.GetKeyDown(KeyCode.Alpha1) && beaconLevel < 3)
+            {
                 beaconLevel += 1;
                 upgradePoints -= 1;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2)){
+            if (Input.GetKeyDown(KeyCode.Alpha2) && barrierLevel < 3)
+            {
                 upgradePoints -= 1;
                 barrierLevel += 1;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3)){
-                upgradePoints -= 1;
-                grenadeLevel += 1;
             }
         }
         else
