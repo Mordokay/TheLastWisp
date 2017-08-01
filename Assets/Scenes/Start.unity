@@ -138,10 +138,10 @@ RectTransform:
   m_Father: {fileID: 242782077}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.43173072, y: 0.156}
-  m_AnchorMax: {x: 0.66826934, y: 0.20323102}
-  m_AnchoredPosition: {x: 0.5448456, y: -1.5}
-  m_SizeDelta: {x: -13, y: 1}
+  m_AnchorMin: {x: 0.36173072, y: 0.156}
+  m_AnchorMax: {x: 0.75426936, y: 0.20836136}
+  m_AnchoredPosition: {x: 4.1426687, y: -3}
+  m_SizeDelta: {x: -20, y: -2}
   m_Pivot: {x: 0.43189484, y: 0.5}
 --- !u!114 &17914964
 MonoBehaviour:
@@ -163,7 +163,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 083de41298038b746a45b993fc74bc3e, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -7314,7 +7314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 4.9780116
+  m_AspectRatio: 5.163223
 --- !u!1 &772730406
 GameObject:
   m_ObjectHideFlags: 0
@@ -7482,7 +7482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7490,7 +7490,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 083de41298038b746a45b993fc74bc3e, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -7620,12 +7620,18 @@ MonoBehaviour:
   beaconRed: {fileID: 1373763015748790, guid: 6803b38260ebc454480ac174b431fde0, type: 2}
   beaconNormal: {fileID: 1274566438744376, guid: 38d5ce941f31c804e9b43ef947004302,
     type: 2}
+  beaconNormalUp2: {fileID: 0}
+  beaconNormalUp3: {fileID: 0}
   barrierGreen: {fileID: 1587622121983756, guid: 3aeb1ee579591d6458312966bd18e6ae,
     type: 2}
   barrierRed: {fileID: 1366876102572660, guid: 1f4f0f0461475174594f5bce8def39d3, type: 2}
   barrierNormal: {fileID: 1961145739663300, guid: 547facc7f02e61f498c8a9be809dfbc2,
     type: 2}
+  barrierNormalUp2: {fileID: 0}
+  barrierNormalUp3: {fileID: 0}
   rotationSpeed: 8000
+  barrierCost: 0
+  beaconCost: 0
 --- !u!114 &1231687970
 MonoBehaviour:
   m_ObjectHideFlags: 0
