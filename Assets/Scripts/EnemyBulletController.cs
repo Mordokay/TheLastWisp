@@ -10,6 +10,7 @@ public class EnemyBulletController : MonoBehaviour {
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager");
+        gm.GetComponent<PlayerStats>().InstantiateBulletSound();
         Destroy(this.gameObject, 2f);
     }
     

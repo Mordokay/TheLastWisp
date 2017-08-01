@@ -13,14 +13,18 @@ public class PlayerAtackController : MonoBehaviour {
 
     PlayerStats stats;
     GameObject gm;
+    public GameObject shootAudio;
+    public GameObject lightsaberAudio;
+    public float timeSinceLastSaber;
 
-	void Start () {
+    void Start () {
+        timeSinceLastSaber = 0.0f;
         gm = GameObject.FindGameObjectWithTag("GameManager");
         stats = gm.GetComponent<PlayerStats>();
     }
 	
 	void Update () {
-
+        timeSinceLastSaber += Time.deltaTime;
         if (Input.GetButtonDown("Fire1") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire2"))
         {
             RaycastHit hit;
@@ -31,9 +35,12 @@ public class PlayerAtackController : MonoBehaviour {
                 Vector3 direction = (hit.point - myBullet.transform.position).normalized;
                 direction.y = 0;
                 myBullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
-            }
+                stats.LoseHealth(7.5f);
 
-            stats.LoseHealth(7.5f);
+                GameObject myShoot = Instantiate(shootAudio);
+                myShoot.GetComponent<AudioSource>().Play();
+                Destroy(myShoot, 2.0f);
+            }            
         }
         if (Input.GetButtonDown("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))
         {
@@ -50,6 +57,13 @@ public class PlayerAtackController : MonoBehaviour {
 
         if (Input.GetButton("Fire2") && !stats.droppingBeacon && !stats.isLowHealth() && !stats.droppingBarrier && !Input.GetButtonDown("Fire1"))
         {
+            if (timeSinceLastSaber > 0.2f)
+            {
+                timeSinceLastSaber = 0.0f;
+                GameObject myLightsaber = Instantiate(lightsaberAudio);
+                myLightsaber.GetComponent<AudioSource>().Play();
+                Destroy(myLightsaber, 1.0f);
+            }
             if (up)
             {
                 lightSaber.transform.RotateAround(this.gameObject.transform.position, Vector3.up, 1500 * Time.deltaTime);

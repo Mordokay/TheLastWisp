@@ -44,6 +44,8 @@ public class PlayerStats : MonoBehaviour {
     public Text time;
     public Text kills;
 
+    public GameObject bulletShootSound;
+
     private void Start()
     {
         life = 100;
@@ -57,6 +59,13 @@ public class PlayerStats : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         finalHealth = playerLight.spotAngle;
         beacons = new List<GameObject>();
+    }
+
+    public void InstantiateBulletSound()
+    {
+        GameObject myShoot = Instantiate(bulletShootSound);
+        myShoot.GetComponent<AudioSource>().Play();
+        Destroy(myShoot, 2.0f);
     }
 
     private void Update()

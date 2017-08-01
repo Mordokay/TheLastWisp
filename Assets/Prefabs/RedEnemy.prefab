@@ -114,6 +114,7 @@ MonoBehaviour:
     type: 2}
   xpGain: 10
   atackTimeInterval: 2
+  life: 0
 --- !u!136 &136183868036153886
 CapsuleCollider:
   m_ObjectHideFlags: 1
